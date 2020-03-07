@@ -1,0 +1,700 @@
+2020-03-05 15:09:52,010 - [test_register.py-->line:57] - ERROR: 测试用例已经注册的手机号执行未通过
+2020-03-05 15:09:52,011 - [test_register.py-->line:58] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_register.py", line 49, in test_register
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-05 15:25:57,344 - [test_login.py-->line:55] - ERROR: 测试用例密码输入错误执行未通过
+2020-03-05 15:25:57,346 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-05 15:25:58,242 - [test_login.py-->line:55] - ERROR: 测试用例手机号为空执行未通过
+2020-03-05 15:25:58,243 - [test_login.py-->line:56] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-05 15:25:58,510 - [test_login.py-->line:55] - ERROR: 测试用例密码为空执行未通过
+2020-03-05 15:25:58,510 - [test_login.py-->line:56] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-05 15:30:37,255 - [test_login.py-->line:55] - ERROR: 测试用例密码输入错误执行未通过
+2020-03-05 15:30:37,256 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-05 15:30:37,545 - [test_login.py-->line:55] - ERROR: 测试用例密码输入小于8位执行未通过
+2020-03-05 15:30:37,545 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-05 15:30:37,811 - [test_login.py-->line:55] - ERROR: 测试用例密码输入大于16位执行未通过
+2020-03-05 15:30:37,811 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-05 15:30:38,586 - [test_login.py-->line:55] - ERROR: 测试用例手机号未注册执行未通过
+2020-03-05 15:30:38,587 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-05 15:32:57,200 - [test_login.py-->line:55] - ERROR: 测试用例手机号未注册执行未通过
+2020-03-05 15:32:57,202 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-05 15:54:40,103 - [test_recharge.py-->line:84] - ERROR: 测试用例充值id与token不一致执行未通过
+2020-03-05 15:54:40,104 - [test_recharge.py-->line:85] - ERROR: 1007 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_recharge.py", line 78, in test_recharge
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1007 != 2
+2020-03-05 15:54:40,353 - [test_recharge.py-->line:84] - ERROR: 测试用例充值id为空执行未通过
+2020-03-05 15:54:40,353 - [test_recharge.py-->line:85] - ERROR: 1 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_recharge.py", line 78, in test_recharge
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1 != 2
+2020-03-05 17:14:12,396 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现成功-2位小数执行未通过
+2020-03-05 17:14:12,398 - [test_withdraw.py-->line:88] - ERROR: Decimal('100.99') != Decimal('100.9899999999999948840923025272786617279052734375')
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 84, in test_withdraw
+    self.assertEqual(start_amount-end_amount,Decimal(data['amount']))
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: Decimal('100.99') != Decimal('100.9899999999999948840923025272786617279052734375')
+2020-03-05 17:14:12,731 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现金额为0执行未通过
+2020-03-05 17:14:12,731 - [test_withdraw.py-->line:88] - ERROR: 0 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 2
+2020-03-05 17:14:13,046 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现金额大于可用余额执行未通过
+2020-03-05 17:14:13,047 - [test_withdraw.py-->line:88] - ERROR: 1002 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 2
+2020-03-05 17:14:13,888 - [test_withdraw.py-->line:87] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-05 17:14:13,888 - [test_withdraw.py-->line:88] - ERROR: 1 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1 != 2
+2020-03-05 17:14:14,428 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现金额为空执行未通过
+2020-03-05 17:14:14,429 - [test_withdraw.py-->line:88] - ERROR: 1 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1 != 2
+2020-03-05 17:14:14,687 - [test_withdraw.py-->line:87] - ERROR: 测试用例会员id为空执行未通过
+2020-03-05 17:14:14,687 - [test_withdraw.py-->line:88] - ERROR: 1 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1 != 2
+2020-03-05 17:19:48,699 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现成功-2位小数执行未通过
+2020-03-05 17:19:48,701 - [test_withdraw.py-->line:88] - ERROR: Decimal('100.99') != Decimal('100.9899999999999948840923025272786617279052734375')
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 84, in test_withdraw
+    self.assertEqual(start_amount-end_amount,Decimal(data['amount']))
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: Decimal('100.99') != Decimal('100.9899999999999948840923025272786617279052734375')
+2020-03-05 17:19:49,791 - [test_withdraw.py-->line:87] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-05 17:19:49,792 - [test_withdraw.py-->line:88] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-05 17:20:37,361 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现成功-2位小数执行未通过
+2020-03-05 17:20:37,361 - [test_withdraw.py-->line:88] - ERROR: Decimal('100.99') != Decimal('100.9899999999999948840923025272786617279052734375')
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 84, in test_withdraw
+    self.assertEqual(start_amount-end_amount,Decimal(data['amount']))
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: Decimal('100.99') != Decimal('100.9899999999999948840923025272786617279052734375')
+2020-03-05 17:20:38,847 - [test_withdraw.py-->line:87] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-05 17:20:38,847 - [test_withdraw.py-->line:88] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-05 17:22:06,823 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现成功-整数执行未通过
+2020-03-05 17:22:06,826 - [test_withdraw.py-->line:88] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-05 17:22:07,268 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现成功-1位小数执行未通过
+2020-03-05 17:22:07,268 - [test_withdraw.py-->line:88] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-05 17:22:07,694 - [test_withdraw.py-->line:87] - ERROR: 测试用例提现成功-2位小数执行未通过
+2020-03-05 17:22:07,694 - [test_withdraw.py-->line:88] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-05 17:22:08,992 - [test_withdraw.py-->line:87] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-05 17:22:08,992 - [test_withdraw.py-->line:88] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_withdraw.py", line 81, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-06 11:49:04,231 - [test_add.py-->line:84] - ERROR: 测试用例新增项目-借款期限单位为月执行未通过
+2020-03-06 11:49:04,233 - [test_add.py-->line:85] - ERROR: 0 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_add.py", line 81, in test_add
+    self.assertEqual(end_sum-start_sum,1)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1
+2020-03-06 11:49:04,712 - [test_add.py-->line:84] - ERROR: 测试用例新增项目-借款期限单位为天执行未通过
+2020-03-06 11:49:04,712 - [test_add.py-->line:85] - ERROR: 2 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_add.py", line 78, in test_add
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 0
+2020-03-06 11:50:16,518 - [test_add.py-->line:85] - ERROR: 测试用例新增项目-借款期限单位为月执行未通过
+2020-03-06 11:50:16,519 - [test_add.py-->line:86] - ERROR: 0 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_add.py", line 82, in test_add
+    self.assertEqual(end_sum-start_sum,1)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1
+2020-03-06 11:50:17,006 - [test_add.py-->line:85] - ERROR: 测试用例新增项目-借款期限单位为天执行未通过
+2020-03-06 11:50:17,006 - [test_add.py-->line:86] - ERROR: 2 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_add.py", line 79, in test_add
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 0
+2020-03-06 11:54:42,567 - [test_add.py-->line:85] - ERROR: 测试用例新增项目-借款期限单位为天执行未通过
+2020-03-06 11:54:42,569 - [test_add.py-->line:86] - ERROR: 2 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_add.py", line 79, in test_add
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 0
+2020-03-07 11:50:08,814 - [test_main_stream.py-->line:65] - ERROR: 测试用例管理员注册执行未通过
+2020-03-07 11:50:08,814 - [test_main_stream.py-->line:66] - ERROR: 1005 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 62, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 0
+2020-03-07 11:50:09,157 - [test_main_stream.py-->line:65] - ERROR: 测试用例用户注册执行未通过
+2020-03-07 11:50:09,157 - [test_main_stream.py-->line:66] - ERROR: 1005 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 62, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 0
+2020-03-07 11:53:35,111 - [test_main_stream.py-->line:68] - ERROR: 测试用例管理员注册执行未通过
+2020-03-07 11:53:35,111 - [test_main_stream.py-->line:69] - ERROR: 1005 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 65, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 0
+2020-03-07 11:53:35,454 - [test_main_stream.py-->line:68] - ERROR: 测试用例用户注册执行未通过
+2020-03-07 11:53:35,454 - [test_main_stream.py-->line:69] - ERROR: 1005 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 65, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 0
+2020-03-07 11:56:20,321 - [test_main_stream.py-->line:72] - ERROR: 用例：管理员注册，执行未通过
+2020-03-07 11:56:20,321 - [test_main_stream.py-->line:73] - ERROR: 0 != 1005
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 68, in test_main_stream
+    self.assertEqual(expected["code"], res["code"])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1005
+2020-03-07 11:56:20,649 - [test_main_stream.py-->line:72] - ERROR: 用例：用户注册，执行未通过
+2020-03-07 11:56:20,649 - [test_main_stream.py-->line:73] - ERROR: 0 != 1005
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 68, in test_main_stream
+    self.assertEqual(expected["code"], res["code"])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1005
+2020-03-07 12:01:43,911 - [test_info.py-->line:65] - ERROR: 测试用例用户id为空执行未通过
+2020-03-07 12:01:43,911 - [test_info.py-->line:66] - ERROR: 1005 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_info.py", line 62, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 1
+2020-03-07 12:01:44,474 - [test_main_stream.py-->line:73] - ERROR: 用例：管理员注册，执行未通过
+2020-03-07 12:01:44,474 - [test_main_stream.py-->line:74] - ERROR: 0 != 1005
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 69, in test_main_stream
+    self.assertEqual(expected["code"], res["code"])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1005
+2020-03-07 12:01:45,411 - [test_main_stream.py-->line:73] - ERROR: 用例：用户注册，执行未通过
+2020-03-07 12:01:45,411 - [test_main_stream.py-->line:74] - ERROR: 0 != 1005
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 69, in test_main_stream
+    self.assertEqual(expected["code"], res["code"])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1005
+2020-03-07 12:03:56,202 - [test_info.py-->line:65] - ERROR: 测试用例用户id为空执行未通过
+2020-03-07 12:03:56,202 - [test_info.py-->line:66] - ERROR: 1005 != 1
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_info.py", line 62, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 1
+2020-03-07 12:03:56,765 - [test_main_stream.py-->line:73] - ERROR: 用例：管理员注册，执行未通过
+2020-03-07 12:03:56,765 - [test_main_stream.py-->line:74] - ERROR: 0 != 1005
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 69, in test_main_stream
+    self.assertEqual(expected["code"], res["code"])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1005
+2020-03-07 12:03:57,639 - [test_main_stream.py-->line:73] - ERROR: 用例：用户注册，执行未通过
+2020-03-07 12:03:57,639 - [test_main_stream.py-->line:74] - ERROR: 0 != 1005
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_main_stream.py", line 69, in test_main_stream
+    self.assertEqual(expected["code"], res["code"])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1005
+2020-03-07 12:03:59,623 - [test_register.py-->line:59] - ERROR: 测试用例注册成功-带注册名执行未通过
+2020-03-07 12:03:59,623 - [test_register.py-->line:60] - ERROR: 1005 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_register.py", line 51, in test_register
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 0
+2020-03-07 12:03:59,967 - [test_register.py-->line:59] - ERROR: 测试用例注册成功-不带注册名执行未通过
+2020-03-07 12:03:59,967 - [test_register.py-->line:60] - ERROR: 1005 != 0
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_register.py", line 51, in test_register
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 0
+2020-03-07 12:04:02,486 - [test_register.py-->line:59] - ERROR: 测试用例密码大于16位执行未通过
+2020-03-07 12:04:02,486 - [test_register.py-->line:60] - ERROR: 1005 != 2
+Traceback (most recent call last):
+  File "D:\py26_apitest_v2\testcases\test_register.py", line 51, in test_register
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 2
+2020-03-07 16:35:47,734 - [test_login.py-->line:55] - ERROR: 测试用例手机号未注册执行未通过
+2020-03-07 16:35:47,734 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-07 16:35:55,715 - [test_register.py-->line:59] - ERROR: 测试用例密码大于16位执行未通过
+2020-03-07 16:35:55,731 - [test_register.py-->line:60] - ERROR: 0 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_register.py", line 51, in test_register
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 2
+2020-03-07 16:35:58,504 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现成功-整数执行未通过
+2020-03-07 16:35:58,504 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:35:58,957 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现成功-1位小数执行未通过
+2020-03-07 16:35:58,957 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:35:59,426 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现成功-2位小数执行未通过
+2020-03-07 16:35:59,426 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:35:59,691 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现金额为0执行未通过
+2020-03-07 16:35:59,691 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:36:00,947 - [test_withdraw.py-->line:98] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-07 16:36:00,947 - [test_withdraw.py-->line:99] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-07 16:52:09,815 - [test_login.py-->line:55] - ERROR: 测试用例手机号未注册执行未通过
+2020-03-07 16:52:09,815 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-07 16:52:17,576 - [test_register.py-->line:59] - ERROR: 测试用例密码大于16位执行未通过
+2020-03-07 16:52:17,576 - [test_register.py-->line:60] - ERROR: 0 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_register.py", line 51, in test_register
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 2
+2020-03-07 16:52:20,325 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现成功-整数执行未通过
+2020-03-07 16:52:20,325 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:52:20,825 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现成功-1位小数执行未通过
+2020-03-07 16:52:20,825 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:52:21,278 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现成功-2位小数执行未通过
+2020-03-07 16:52:21,278 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:52:21,544 - [test_withdraw.py-->line:98] - ERROR: 测试用例提现金额为0执行未通过
+2020-03-07 16:52:21,544 - [test_withdraw.py-->line:99] - ERROR: 1002 != 0
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1002 != 0
+2020-03-07 16:52:22,590 - [test_withdraw.py-->line:98] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-07 16:52:22,590 - [test_withdraw.py-->line:99] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-07 16:58:31,256 - [test_login.py-->line:55] - ERROR: 测试用例手机号未注册执行未通过
+2020-03-07 16:58:31,271 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-07 16:58:44,778 - [test_withdraw.py-->line:98] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-07 16:58:44,778 - [test_withdraw.py-->line:99] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-07 17:03:58,328 - [test_info.py-->line:71] - ERROR: 测试用例用户id为空执行未通过
+2020-03-07 17:03:58,328 - [test_info.py-->line:72] - ERROR: 1005 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_info.py", line 68, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 1
+2020-03-07 17:04:05,264 - [test_loans.py-->line:68] - ERROR: 测试用例页数为负值执行未通过
+2020-03-07 17:04:05,264 - [test_loans.py-->line:69] - ERROR: 0 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 65, in test_loans
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1
+2020-03-07 17:04:05,607 - [test_loans.py-->line:68] - ERROR: 测试用例页索引为负数执行未通过
+2020-03-07 17:04:05,607 - [test_loans.py-->line:69] - ERROR: 0 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 65, in test_loans
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 2
+2020-03-07 17:04:08,638 - [test_login.py-->line:55] - ERROR: 测试用例手机号未注册执行未通过
+2020-03-07 17:04:08,638 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2
+2020-03-07 17:04:24,614 - [test_withdraw.py-->line:98] - ERROR: 测试用例会员id不存在执行未通过
+2020-03-07 17:04:24,614 - [test_withdraw.py-->line:99] - ERROR: 2 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_withdraw.py", line 92, in test_withdraw
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 2 != 1
+2020-03-07 17:05:45,572 - [test_info.py-->line:71] - ERROR: 测试用例用户id为空执行未通过
+2020-03-07 17:05:45,572 - [test_info.py-->line:72] - ERROR: 1005 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_info.py", line 68, in test_info
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1005 != 1
+2020-03-07 17:05:52,591 - [test_loans.py-->line:68] - ERROR: 测试用例页数为负值执行未通过
+2020-03-07 17:05:52,591 - [test_loans.py-->line:69] - ERROR: 0 != 1
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 65, in test_loans
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1
+2020-03-07 17:05:52,857 - [test_loans.py-->line:68] - ERROR: 测试用例页索引为负数执行未通过
+2020-03-07 17:05:52,857 - [test_loans.py-->line:69] - ERROR: 0 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 65, in test_loans
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 2
+2020-03-07 17:05:55,544 - [test_login.py-->line:55] - ERROR: 测试用例手机号未注册执行未通过
+2020-03-07 17:05:55,544 - [test_login.py-->line:56] - ERROR: 1001 != 2
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "C:\Users\ann\AppData\Local\Programs\Python\Python36\lib\unittest\case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1001 != 2

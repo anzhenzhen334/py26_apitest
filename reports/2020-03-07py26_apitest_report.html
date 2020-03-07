@@ -1,0 +1,2319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>测试项目全接口测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 120%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">测试项目全接口测试报告</h1>
+<p class='attribute'><strong>测试人员 : </strong> ann</p>
+<p class='attribute'><strong>开始时间 : </strong> 2020-03-07 17:05:36</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:35.829806</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 100，通过 96，失败 4，通过率= 96.00%</p>
+
+<p class='description'>futureloan项目全部接口对应的测试报告</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 96.00% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 4 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 96 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 100 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 16px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_add.TestAdd</td>
+    <td class="text-center">17</td>
+    <td class="text-center">17</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',17)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_01: 登录</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in" align="left">
+    <pre>
+    
+pt1_1: 测试用例中data的值是： {'mobile_phone': '15821865916', 'pwd': '12345678'}
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 11396, 'leave_amount': 38200.0, 'mobile_phone': '15821865916', 'reg_name': 'ann-666', 'reg_time': '2020-03-02 13:31:47.0', 'type': 0, 'token_info': {'token_type': 'Bearer', 'expires_in': '2020-03-07 17:10:36', 'token': 'eyJhbGciOiJIUzUxMiJ9.eyJtZW1iZXJfaWQiOjExMzk2LCJleHAiOjE1ODM1NzIyMzZ9.GRqhFLUfYyq_WW8KJLxyhlEvhk8PYLvfxAh8KVcvs5FcntHT1XyKwjEsYJLTjPjlWhNreM4lUuqknG5GgQYsdg'}}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_02: 新增项目-借款期限单位为月</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse in" align="left">
+    <pre>
+    
+pt1_2: 测试用例中data的值是： {'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000, 'loan_rate': 5.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 1, 'timestamp': 1583571936, 'sign': 'xh9crQJNrvRgl3trblXqgD8v7avvPe6CIT2L3noL68FOVUOBSLlgWzLz9O+x2dwbZqDbbbP1ytNb/Pasg/SYAdOciuSm5xU0mCZGY/ilWbfsRLS3ikJyQ4o36Kgjr2nmTDuhlN90LwmgSNRAsRVFtHPQpmCbxYnQ0Su5zS2f5Xk='}
+执行添加项目前的总项目数是： 140
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 35168, 'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000.0, 'loan_rate': 5.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:37.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+执行添加项目后的总项目数是： 141
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_03: 新增项目-借款期限单位为天</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse in" align="left">
+    <pre>
+    
+pt1_3: 测试用例中data的值是： {'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000, 'loan_rate': 5.0, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 1, 'timestamp': 1583571937, 'sign': 'Ypo/zr+l4Gp9JgDJxKxTpI1KDY0dZTkKcTsR4i0uOXA46wK4+/1bYxV2IbPbaQlJgPi88yloj3Albn5QakQmGmy0RdV85igN7DRJOVONeG/UxClyeoJ4em0nIfhrmmek7wm6BW9/Ar8ftW9Mmxl1bAPn+TylwchnZBmFpiZitgM='}
+执行添加项目前的总项目数是： 141
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 35169, 'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000.0, 'loan_rate': 5.0, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:37.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+执行添加项目后的总项目数是： 142
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_04: 新增项目-单位为月时大于36个月</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse in" align="left">
+    <pre>
+    
+pt1_4: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款期限大于36个月', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 48, 'loan_date_type': 1, 'bidding_days': 7, 'timestamp': 1583571938, 'sign': 'SBTAWusAx++NPqAvf66ZYc4ELSH2THTQ+Rl1nWpMLVlO9eHgk+uWEzPK7VCzY8McMv9MGDx1IBYRmMC+sYK4nH3530iQEdOa+I2FAhf9iuCyGOtyu14mkHM/wWOhYU8NMU7SksVzY0LYkVEOE8q6O6RT2oD7Pgzd7o7rUJR4ENY='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_05: 新增项目-单位为月时小于1个月</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse in" align="left">
+    <pre>
+    
+pt1_5: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款期限单位小于1个月', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 0, 'loan_date_type': 1, 'bidding_days': 8, 'timestamp': 1583571938, 'sign': 'ixU3IZrPiHl4TsLKvSDeob9DwLGj0Y3e5JFxK61Jtt6frxgwEWv95MktGcv+6Fz/yCzXuaDFcGQZ0jeih/uIWegGX7q3S7mUdvz0qcTXyHfpvk8qCZZv1qSALIBaQ2T/Su+dU7DEozqhBXOGRzcOiFmu8uZQWX/w7TF4EA7Z6OM='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_06: 新增项目-单位为天时小于10天</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_6'>通过</button>
+    <div id='div_pt1_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_6'>通过</button>
+    <div id='div_pt1_6' class="collapse in" align="left">
+    <pre>
+    
+pt1_6: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款期限小于10天', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 1, 'loan_date_type': 2, 'bidding_days': 9, 'timestamp': 1583571938, 'sign': 'l2/fdKjHgo7ARSdSx1hKkebYitC+VD6yiRG0IegxyTwxOm9gb/HoQxS9tuNX1F9AKGi5G87SiySmDB99Ry8h3McF0KtuiUfwqku6N2VsZ0OoWyME25UwfvqiUKgl9Q3vwpSk1zLI1ElbhUgY9UeHj6mxzwGzH916TDfgi316+3Y='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_07: 新增项目-单位为天时大于45天</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse in" align="left">
+    <pre>
+    
+pt1_7: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款期限大于45天', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 50, 'loan_date_type': 2, 'bidding_days': 10, 'timestamp': 1583571938, 'sign': 'p38CQh8qw6AfnEqTfhbapSz0qzDmPbvSDZ7S/ADTXpx8GMvOCoVsrJklDrm3mp9uloJK82g6Cmb2Z2N7Tm+snl9UIbtidpQWXoi9L3O2q1cIYpcua9MNf+iBKBgFVnp1MIaSdt+YPFYv7iKBeWOgVBgbWkDti5JQg2lYB9ECSFk='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_08: 新增项目-竞标天数小于1天</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse in" align="left">
+    <pre>
+    
+pt1_8: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-竞标天数小于1天', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 0, 'timestamp': 1583571939, 'sign': 'Io5f/5CxoCqaESa+MJKx33lTh1zaYLO1EuVwypwlHpck60yeBL8Oq07xPIc38WA4f5MN/QGDkwFPpb7lSATcs/IRxhyoWqJp5X9MvTJML8bnebKgtkK9Ss9xb9irGFyH3MXYh0oy5Y0Lly5SaGGoalcEHkWFexJoGs9QYiyh+pk='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_09: 新增项目-竞标天数大于10天</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse in" align="left">
+    <pre>
+    
+pt1_9: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-竞标天数大于10天', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 12, 'timestamp': 1583571939, 'sign': 'RdPxx3DI8RfesWVUg8IGSdIUjccmrCz+epVoKonpjzUVwaP96AxQcX8YpBR4rvkuX+/vFPNdSl0D82cAC5df1ePbq6PON9rni7OImEJKBQgpWm9+x8YukOKCpzz37utHZWJQTqu/5aMe9J3LBR/Napf5nC4nRFxZxGEjvPNkAes='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_10: 新增项目-借款金额为负数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse in" align="left">
+    <pre>
+    
+pt1_10: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款金额为负数', 'amount': -666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 13, 'timestamp': 1583571939, 'sign': 'GA36vB7OQ+qMu/RpOFdzc8TZeuW8vNtXvyS7a0DKZz25B6KrqBFtQFPKAHvRt8txkhuA9RYcZPk+5+Lb1w5a/Btjn2p4KL8IP4D49sQlPg61BRYokbQXk8KVmsvrJ9Ew5NT/G84vhjNhrIPwqMavXcCS/hWos7ggedMYG3GMlrc='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_11: 新增项目-借款人id在member表中不存在</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse in" align="left">
+    <pre>
+    
+pt1_11: 测试用例中data的值是： {'member_id': 999227, 'title': '测试新增项目-借款id不存在', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 1, 'timestamp': 1583571939, 'sign': 'CJXAtx9zuHrAmZvDVdQFpKqAoE0zHEaD4QzZ9nPxENx0s4xyQZsmnF/maSUIDNEt6BT9kSJTc1ZeqzFK+4q0Mc7Ywk2i5kGO0VYhh3rWXMsMCIk0YeqWImL8+EK3ECg3r3n3XBBu/2n5KZtFj0RrXmB3FudD9mL++J6YD3LmhkI='}
+执行接口后的结果是： {'code': 2, 'msg': '会员不存在', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_12' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_12: 新增项目-借款人id字段为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_12'>通过</button>
+    <div id='div_pt1_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_12'>通过</button>
+    <div id='div_pt1_12' class="collapse in" align="left">
+    <pre>
+    
+pt1_12: 测试用例中data的值是： {'member_id': None, 'title': '测试新增项目-借款id为空', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'timestamp': 1583571940, 'sign': 'SVAc28CJmRfJDBIbZx3Dj/32r+i5D05hXVICe2J5sf4/D7fQeI49dfz/OOwXHu6ke4HL9kImFNvA78xelZPDKBRthThBRI/dVtNKQeax4rTn9Kd5cPNwinm7rPNlf8aYideOqVunBnw2RBNq0eweuH7fJqUOZxmO46+EhytYWjY='}
+执行接口后的结果是： {'code': 1, 'msg': '用户id为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_13' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_13: 新增项目-标题为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_13'>通过</button>
+    <div id='div_pt1_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_13'>通过</button>
+    <div id='div_pt1_13' class="collapse in" align="left">
+    <pre>
+    
+pt1_13: 测试用例中data的值是： {'member_id': 11396, 'title': None, 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 6, 'timestamp': 1583571940, 'sign': 'm0PoeO8fWRN8FTD88a59AAmmye1koMOghEMNunk8xMCYXj9+tJC6xXNB9Xqvbcxv9i8UTvTOGGXyy4KMihfEf5PWtAdVi2BJBKTvNCG8o0JWUoagUUhBL2o56plYEnRTWHOkmOZFztQ+KhgOagOYUwB9Yrtp7WVLQc0BabhZcOc='}
+执行接口后的结果是： {'code': 1, 'msg': '标题为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_14' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_14: 新增项目-借款金额为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_14'>通过</button>
+    <div id='div_pt1_14' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_14' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_14'>通过</button>
+    <div id='div_pt1_14' class="collapse in" align="left">
+    <pre>
+    
+pt1_14: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款金额为空', 'amount': None, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 1, 'timestamp': 1583571940, 'sign': 'IG45x5wFvfgjxnvgLteC4vOaAtP0+I/EB6aYkLSu8hU5gfsAjEketipWVh0PCwM/aNypx3GpdCSRhgG/DXICT/mbgXEDninxgiZmB1Jyzd+upCNigm3OxyiLAXTYXd2bPcWuVSNPjxTWqNNjspzLYZcfHWR3/C7VnaGiGJ1i+uM='}
+执行接口后的结果是： {'code': 1, 'msg': '借款金额为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_15' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_15: 新增项目-借款期限为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_15'>通过</button>
+    <div id='div_pt1_15' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_15' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_15'>通过</button>
+    <div id='div_pt1_15' class="collapse in" align="left">
+    <pre>
+    
+pt1_15: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款期限为空', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': None, 'loan_date_type': 1, 'bidding_days': 8, 'timestamp': 1583571941, 'sign': 'Wwuc6WDmmeu1P6OHCzhAtblrvf6+hlWvAP5LbjI4BIYRAVjICMpnp2oOr+KZcHXSmpz5vohujiS68SKCS04X/Rhqmsj/Z+Wtjr7ev2rOpy4BUqyQcITARJqnTQyjROP6+BMOv5QPYxw+pAizHy45w5fCBney8Sqa4xkbZE5PVf0='}
+执行接口后的结果是： {'code': 1, 'msg': '借款期限为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_16' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_16: 新增项目-借款期限类型非1和2</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_16'>通过</button>
+    <div id='div_pt1_16' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_16' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_16'>通过</button>
+    <div id='div_pt1_16' class="collapse in" align="left">
+    <pre>
+    
+pt1_16: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-借款期限单位非1和2', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 10, 'bidding_days': 9, 'timestamp': 1583571941, 'sign': 'CD0znk0MmQBE6b/ClX2Z+106fMCn2gmq8HUKE7KxUaxP34QJTt97ShM8CzIx0AhMfq2eplr3jsR+ZdhCrb7isb5mJqbddYHLocOfhR0rXTMDnskLaNR7lp9kq5vrhpoSXQ63yYZYvOVYd53MTaHTN1rg+hg5qGqscAvWcRYbx74='}
+执行接口后的结果是： {'code': 2, 'msg': '借款金额范围错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_17' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_17: 新增项目-竞标天数为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_17'>通过</button>
+    <div id='div_pt1_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_17'>通过</button>
+    <div id='div_pt1_17' class="collapse in" align="left">
+    <pre>
+    
+pt1_17: 测试用例中data的值是： {'member_id': 11396, 'title': '测试新增项目-竞标天数为空', 'amount': 666.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': None, 'timestamp': 1583571941, 'sign': 'BykmEXyBiLYTuhAjlcErF8nTe/S34ntVxpW54tbJpCunwTZIqQq45jMUTt1KugfZWF0bke1Su4LQViVVAoWlIcX4C7Wbtx/4wMFMP36m10KlaZam4nrk1a98sIVW1wO6IuqYdMIefEL303MqIgDs6urkcS+sOY4+RSll3cr2A1k='}
+执行接口后的结果是： {'code': 1, 'msg': '竞标期限为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_audit.TestAudit</td>
+    <td class="text-center">6</td>
+    <td class="text-center">6</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',6)" class="detail" id='c2'>详细</a></td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_audit_1: 项目未审核状态进行审核通过</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse in" align="left">
+    <pre>
+    
+pt2_1: 测试用例中data的值是： {'loan_id': 35170, 'approved_or_not': 'true', 'timestamp': 1583571942, 'sign': 'uxrHHft8C+0LbhrsllGoOxgW3mtB0FjFynZ0OFmbtEay5pg+SQpemiA3WbBshJuZ4vzifJhOOsOvc1Zb7VhSIqIQMjuijKVGhushadw1PboRAjCaE+hpn8xSC7Q3FP1YQ9SJnNZpZLO9fBPElRxvd03HeRyjozR3JV9A1MAqrPY='}
+审核-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_audit_2: 对审核通过的项目再次审核</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_2'>通过</button>
+    <div id='div_pt2_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_2'>通过</button>
+    <div id='div_pt2_2' class="collapse in" align="left">
+    <pre>
+    
+pt2_2: 测试用例中data的值是： {'loan_id': 35170, 'approved_or_not': 'true', 'timestamp': 1583571942, 'sign': 'zyWI4k6pCnRX66BoTrIABbsxcoykAV0+D8TkbMZaXlhKEVmX0csPe2oyoRRDnrihEUV1rAq73RFyr1zbcVZVc23OMOL6FRPK3grpLs5j/AOkxUKmF6nD5qC4gwI8zSGPaC1gCH5/RspBsiiMsQkByZJ41zbd3LovSNhKTRseg8Q='}
+审核-测试用例执行结果： {'code': 2, 'msg': '项目不在审核中状态', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_audit_3: 项目未审核状态进行审核不通过</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_3'>通过</button>
+    <div id='div_pt2_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_3'>通过</button>
+    <div id='div_pt2_3' class="collapse in" align="left">
+    <pre>
+    
+pt2_3: 测试用例中data的值是： {'loan_id': 35172, 'approved_or_not': 'false', 'timestamp': 1583571942, 'sign': 'WMjos+RHgEfH6xWPBG9ylZvtR+mkNYUN7O5IxVfLqtacGJhL4qIyevLmNuhgAmDvTCS1L7m7quFf2AkLHHHU8xfJpnUJKN28virm7K93BgCBWGnuuz/kFXAkN5Hyy5tqZPhI//2K+QjbftBDX5KMHy/OFxJTBX81f2cLSgzCpDY='}
+审核-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_audit_4: 项目id为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_4'>通过</button>
+    <div id='div_pt2_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_4'>通过</button>
+    <div id='div_pt2_4' class="collapse in" align="left">
+    <pre>
+    
+pt2_4: 测试用例中data的值是： {'loan_id': None, 'approved_or_not': 'false', 'timestamp': 1583571943, 'sign': 'chFMi6btqbyVq2xpvpf6jDhc0suYTYCL+0Sqf49bAzAbu3LLa5+dGFga5qhaI+80u2L4AFvVwQ+P1NGf6EmKBZ/YD0ujimuW8+52zuMxj2W3UZ/m2nfUqBmvgQqiq7+lbivUwWXd/ssGGM2ksZaV4XJqF/+JONchRdA56TAH/J0='}
+审核-测试用例执行结果： {'code': 1, 'msg': '项目id为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_audit_5: 审核字段为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_5'>通过</button>
+    <div id='div_pt2_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_5'>通过</button>
+    <div id='div_pt2_5' class="collapse in" align="left">
+    <pre>
+    
+pt2_5: 测试用例中data的值是： {'loan_id': 35174, 'approved_or_not': None, 'timestamp': 1583571943, 'sign': 'lo4KpR741jSjghFXJz5piq4mnb+dGJcGopsZTIMKJ65sD/2pOSQL5Okw9Aw5OiMyurYAMXJP1sHUR3k/3CMR3OtRHVjpCH+U0/cSrcFZ9A0OmcJnATGyb12LIBt392jKjvL4ORzRUwAPhPFfjlPX8gKcvmd1fpbzH+tU55pXttQ='}
+审核-测试用例执行结果： {'code': 1, 'msg': 'approved_or_not为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_audit_6: 项目id不存在</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_6'>通过</button>
+    <div id='div_pt2_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_6'>通过</button>
+    <div id='div_pt2_6' class="collapse in" align="left">
+    <pre>
+    
+pt2_6: 测试用例中data的值是： {'loan_id': 1035174, 'approved_or_not': 'false', 'timestamp': 1583571944, 'sign': 'GLzJ7XvJ8VWOk60SCeuDji2fnZ0NJklKdqzSrMdFAI5gNXA5UBfCPo9P7xTaUCmdK+aigs61UAJsZCuJ9fGzdGqmvFK+Wf9463J49v9U758TKXDKHOuupbKZFJt/dKdkG/My22XrI1D9Ux6iBQooQjURdD51pyOIGlLwNUP987g='}
+审核-测试用例执行结果： {'code': 2, 'msg': '项目不存在', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_info.TestInfo</td>
+    <td class="text-center">3</td>
+    <td class="text-center">2</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',3)" class="detail" id='c3'>详细</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_info_1: 正常获取信息</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse in" align="left">
+    <pre>
+    
+pt3_1: 获取用户信息接口的url地址是 http://api.lemonban.com/futureloan/member/11396/info
+获取用户信息接口返回的结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11396, 'leave_amount': 38200.0, 'mobile_phone': '15821865916', 'reg_name': 'ann-666', 'reg_time': '2020-03-02 13:31:47.0', 'type': 0}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_2' class='none'>
+    <td class='failCase'><div class='testcase'>test_info_2: 用户id为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_2'>失败</button>
+    <div id='div_ft3_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_2'>失败</button>
+    <div id='div_ft3_2' class="collapse in" align="left">
+    <pre>
+    
+ft3_2: 获取用户信息接口的url地址是 http://api.lemonban.com/futureloan/member/None/info
+获取用户信息接口返回的结果： {'code': 1005, 'msg': 'Failed to convert value of type \'java.lang.String\' to required type \'java.lang.Long\'; nested exception is java.lang.NumberFormatException: For input string: "None"', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\library\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\py26_api_test_v3\testcases\test_info.py", line 73, in test_info
+    raise e
+  File "D:\py26_api_test_v3\testcases\test_info.py", line 68, in test_info
+    self.assertEqual(res['code'],expected['code'])
+AssertionError: 1005 != 1
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_info_3: 用户id不存在</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_3'>通过</button>
+    <div id='div_pt3_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_3'>通过</button>
+    <div id='div_pt3_3' class="collapse in" align="left">
+    <pre>
+    
+pt3_3: 获取用户信息接口的url地址是 http://api.lemonban.com/futureloan/member/1139699999/info
+获取用户信息接口返回的结果： {'code': 2, 'msg': '用户不存在', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_invest.TestInvest</td>
+    <td class="text-center">10</td>
+    <td class="text-center">10</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',10)" class="detail" id='c4'>详细</a></td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_01: 管理员正常登录</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+    <div id='div_pt4_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+    <div id='div_pt4_1' class="collapse in" align="left">
+    <pre>
+    
+pt4_1: 测试用例中data的值是： {'mobile_phone': '15821865916', 'pwd': '12345678'}
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 11396, 'leave_amount': 38200.0, 'mobile_phone': '15821865916', 'reg_name': 'ann-666', 'reg_time': '2020-03-02 13:31:47.0', 'type': 0, 'token_info': {'token_type': 'Bearer', 'expires_in': '2020-03-07 17:10:46', 'token': 'eyJhbGciOiJIUzUxMiJ9.eyJtZW1iZXJfaWQiOjExMzk2LCJleHAiOjE1ODM1NzIyNDZ9.3KjRn2wum1x2ei1DtDYQFfIAjVBTA--fl0AnroRTnT5tZpORai6QvZUCeRW69gFiGhCM8OLgAdkyd-eleHKdCg'}}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_02: 管理员加标</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_2'>通过</button>
+    <div id='div_pt4_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_2'>通过</button>
+    <div id='div_pt4_2' class="collapse in" align="left">
+    <pre>
+    
+pt4_2: 测试用例中data的值是： {'member_id': 11396, 'title': '借钱实现财富自由', 'amount': 4000, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'timestamp': 1583571946, 'sign': 'lQ/iDJxLKyyXxw8Bg5u4/18vCyjSjn9ST9OBWN+r3kRbh/MRsO9+ZGUbhA254ytZbgIPgqLNSIF1BI+FbZxjNlTJo1t3LciTNFj4QJW7aKSnGGiP9XsYuXDdnf94W3CdxDpNvkS6Q+oqI6/6suKGimJtcIRLgnTeZJNF+VU1z+8='}
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 35176, 'member_id': 11396, 'title': '借钱实现财富自由', 'amount': 4000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:46.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_03: 管理员审核</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_3'>通过</button>
+    <div id='div_pt4_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_3'>通过</button>
+    <div id='div_pt4_3' class="collapse in" align="left">
+    <pre>
+    
+pt4_3: 测试用例中data的值是： {'loan_id': 35176, 'approved_or_not': True, 'timestamp': 1583571946, 'sign': 'dp/APUfQYYqyJY3xlKQoFVRa0O5dRcrvzf1n6f1ZlHzWBODH6SDeF8m0p+8lC6LvgzL02stGJ1s9pKQKpb6UvKmRym2ft1XfaSsW618mHl54ygkj+HCy3hy5FeHIRr1NPLbFBCLmvkE3x9KX8+HL7N0R1Zge3rf656TGoLbcXhI='}
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_04: 投资人正常登录</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_4'>通过</button>
+    <div id='div_pt4_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_4'>通过</button>
+    <div id='div_pt4_4' class="collapse in" align="left">
+    <pre>
+    
+pt4_4: 测试用例中data的值是： {'mobile_phone': '15821865917', 'pwd': '12345678'}
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 173492.55, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1, 'token_info': {'token_type': 'Bearer', 'expires_in': '2020-03-07 17:10:47', 'token': 'eyJhbGciOiJIUzUxMiJ9.eyJtZW1iZXJfaWQiOjExMzk3LCJleHAiOjE1ODM1NzIyNDd9.RJvFc9_4VPdAfIFoSh4sG9xp5Fzs3JSl5RfVtMr3EPY_4zeu-rqHL3GFtFqz6lE7cpf1AzKFHuQg3zMoWdyhIQ'}}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_05: 投资人正常投资</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_5'>通过</button>
+    <div id='div_pt4_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_5'>通过</button>
+    <div id='div_pt4_5' class="collapse in" align="left">
+    <pre>
+    
+pt4_5: 测试用例中data的值是： {'member_id': 11397, 'loan_id': 35176, 'amount': 300, 'timestamp': 1583571947, 'sign': 'VtAzeGX41QL1RfQbmBI057aAjUFoPn6A8Y2tm6MPTJ+6jfg9oILTNDVHabxTzgNj/cIxK2Ff/75cnssVjASXoSa1/i0s3LP9jGvkugOsq70Ls7SUPKsJwSe36iKt68u22AeyRCUnRAwNsEnOrUlqB6kgWDco5YaUiLzn2KKEZSQ='}
+执行投资前的用户余额时： 173492.55
+执行投资前流水记录表中的数量是： 35
+投资前的投资记录条数： 0
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 3710, 'member_id': 11397, 'loan_id': 35176, 'amount': 300.0, 'create_time': '2020-03-07 17:05:47', 'is_valid': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+执行投资后的用户余额时： 173192.55
+执行投资后流水记录表中的数量是： 36
+投资后的投资记录条数： 1
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_06: 投资人id为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_6'>通过</button>
+    <div id='div_pt4_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_6'>通过</button>
+    <div id='div_pt4_6' class="collapse in" align="left">
+    <pre>
+    
+pt4_6: 测试用例中data的值是： {'loan_id': 35176, 'amount': 300, 'timestamp': 1583571948, 'sign': 'LDBecVWh65ShzPoMyTvhS+PjIELRccBS0Sbp/b/P6WujCObvOrid96/DRioXTqeaOSwhmlvaT2ytWIWR0axdtpYY1RJ+KetAEgJTxE/gzZ6OWGwDxUudZYvdTclstTNbY3aXLHnYDMNkevVkLW05vCOhYie66xz/HlbzBqhu+TQ='}
+执行接口后的结果是： {'code': 1, 'msg': '会员id为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_07: 标id为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_7'>通过</button>
+    <div id='div_pt4_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_7'>通过</button>
+    <div id='div_pt4_7' class="collapse in" align="left">
+    <pre>
+    
+pt4_7: 测试用例中data的值是： {'member_id': 11397, 'amount': 300, 'timestamp': 1583571948, 'sign': 'RDu26oFXIqFaYvd8QfKy7WCs1VVevRqnc6jafTIlL+5SwWeUIWaSgaAykoNKYTVLDg1BBNHtTSE7BCIaakee04yCJVt+eGwzfWtPZcJbKZuOw0EQpiQzaLyWgXWFDtEWPPxJ6Ohk1Yts4GdxdAWACG4acyFopkRK7ltaMw02l+w='}
+执行接口后的结果是： {'code': 1, 'msg': '项目id为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_08: 投资金额为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_8'>通过</button>
+    <div id='div_pt4_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_8'>通过</button>
+    <div id='div_pt4_8' class="collapse in" align="left">
+    <pre>
+    
+pt4_8: 测试用例中data的值是： {'member_id': 11397, 'loan_id': 35176, 'timestamp': 1583571948, 'sign': 'atG2gEHBRksjThocoVX31dQNa/2ynsr7VGyDhBwoPRjtAI7sgkBYWAv242oMRhtqU6YLy5ybAQEiUvw9GoCIJC9pJC35e4jQVkV/EBRSRmp4Zjd0x8/lqeFxgb2+3yzQoQ31VLZ16s/YFdowIcje8KTLNHgBroIVth7Ml/ZcjWo='}
+执行接口后的结果是： {'code': 1, 'msg': '余额为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_09: 投资金额大于项目可投金额</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_9'>通过</button>
+    <div id='div_pt4_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_9'>通过</button>
+    <div id='div_pt4_9' class="collapse in" align="left">
+    <pre>
+    
+pt4_9: 测试用例中data的值是： {'member_id': 11397, 'loan_id': 35176, 'amount': 4100, 'timestamp': 1583571948, 'sign': 'f2d7v+AyXurGl8YadLFEuc8P+LjvvEqZ4eMWj3N9CMY5w93vXEBC8nlSnbXEBXddeKk5eo233mttdIR6Gn0Il53wQgjtdAeLqK6f1BCi/Q+xxWd9CWkQaSpWGgKd36z9pmoHM1AjRJh37o0qUJGtYt8U1SLjwDxNZAxLDynqwuw='}
+执行接口后的结果是： {'code': 2, 'msg': '该标可投金额不足,可投金额：3700.0', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_invest_10: 投资刚好满标：投资金额等于项目可投金额</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_10'>通过</button>
+    <div id='div_pt4_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_10'>通过</button>
+    <div id='div_pt4_10' class="collapse in" align="left">
+    <pre>
+    
+pt4_10: 测试用例中data的值是： {'member_id': 11397, 'loan_id': 35176, 'amount': 3700, 'timestamp': 1583571949, 'sign': 'pkjkrZC8bgjDGpq9PQ709Hrx8KnsoWKHpodz7NcWmodcIN8CVWRonDF0IKH3RQfKMKDSA8ZeWbO2Ujwb3Cgcw2DkgL6qPrwBHilfm/1lmPwQ2c+AoyO94kYCkGdIDJo8sAOK3i95qoLFWiGD4xfbDtSni5vWtagMQLNC7Fe4QDM='}
+执行投资前的用户余额时： 173192.55
+执行投资前流水记录表中的数量是： 36
+投资前的投资记录条数： 1
+执行接口后的结果是： {'code': 0, 'msg': 'OK', 'data': {'id': 3711, 'member_id': 11397, 'loan_id': 35176, 'amount': 3700.0, 'create_time': '2020-03-07 17:05:49', 'is_valid': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+执行投资后的用户余额时： 169492.55
+执行投资后流水记录表中的数量是： 37
+投资后的投资记录条数： 2
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_loans.TestLoans</td>
+    <td class="text-center">7</td>
+    <td class="text-center">5</td>
+    <td class="text-center">2</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c5',7)" class="detail" id='c5'>详细</a></td>
+</tr>
+
+<tr id='pt5_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_loans_1: 每页10条第1页</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+    <div id='div_pt5_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+    <div id='div_pt5_1' class="collapse in" align="left">
+    <pre>
+    
+pt5_1: 项目列表接口返回的结果： {'code': 0, 'msg': 'OK', 'data': [{'id': 1, 'member_id': 1, 'title': '接口', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 3, 'bidding_days': 5, 'create_time': '2020-02-29 12:30:47.0', 'bidding_start_time': '2020-02-29 12:31:03.0', 'full_time': '2020-03-03 10:01:18.0', 'status': 3}, {'id': 2, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:36:26.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 3, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:43:28.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 4, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:44:19.0', 'bidding_start_time': '2020-03-02 17:29:13.0', 'full_time': '2020-03-03 23:01:50.0', 'status': 3}, {'id': 5, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:06.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 6, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:57.0', 'bidding_start_time': '2020-02-29 13:24:59.0', 'full_time': '2020-02-29 13:25:02.0', 'status': 3}, {'id': 7, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': '2020-03-02 17:40:55.0', 'full_time': '2020-03-03 23:03:24.0', 'status': 3}, {'id': 8, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 9, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:33.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 10, 'member_id': 129, 'title': 'simpl', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:34.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_loans_2: 每页10条第10000页</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_2'>通过</button>
+    <div id='div_pt5_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_2'>通过</button>
+    <div id='div_pt5_2' class="collapse in" align="left">
+    <pre>
+    
+pt5_2: 项目列表接口返回的结果： {'code': 0, 'msg': 'OK', 'data': [{'id': 35171, 'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000.0, 'loan_rate': 5.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:42.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 35172, 'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000.0, 'loan_rate': 5.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:42.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 35173, 'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000.0, 'loan_rate': 5.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:43.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 35174, 'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000.0, 'loan_rate': 5.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:43.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 35175, 'member_id': 11396, 'title': 'ann测试新增项目单位为月', 'amount': 1000.0, 'loan_rate': 5.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:43.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 35176, 'member_id': 11396, 'title': '借钱实现财富自由', 'amount': 4000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:46.0', 'bidding_start_time': '2020-03-07 17:05:46.0', 'full_time': '2020-03-07 17:05:49.0', 'status': 3}], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_loans_3: 两个字段值为None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_3'>通过</button>
+    <div id='div_pt5_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_3'>通过</button>
+    <div id='div_pt5_3' class="collapse in" align="left">
+    <pre>
+    
+pt5_3: 项目列表接口返回的结果： {'code': 0, 'msg': 'OK', 'data': [{'id': 1, 'member_id': 1, 'title': '接口', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 3, 'bidding_days': 5, 'create_time': '2020-02-29 12:30:47.0', 'bidding_start_time': '2020-02-29 12:31:03.0', 'full_time': '2020-03-03 10:01:18.0', 'status': 3}, {'id': 2, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:36:26.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 3, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:43:28.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 4, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:44:19.0', 'bidding_start_time': '2020-03-02 17:29:13.0', 'full_time': '2020-03-03 23:01:50.0', 'status': 3}, {'id': 5, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:06.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 6, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:57.0', 'bidding_start_time': '2020-02-29 13:24:59.0', 'full_time': '2020-02-29 13:25:02.0', 'status': 3}, {'id': 7, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': '2020-03-02 17:40:55.0', 'full_time': '2020-03-03 23:03:24.0', 'status': 3}, {'id': 8, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 9, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:33.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 10, 'member_id': 129, 'title': 'simpl', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:34.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_loans_4: 页数为None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_4'>通过</button>
+    <div id='div_pt5_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_4'>通过</button>
+    <div id='div_pt5_4' class="collapse in" align="left">
+    <pre>
+    
+pt5_4: 项目列表接口返回的结果： {'code': 0, 'msg': 'OK', 'data': [{'id': 1, 'member_id': 1, 'title': '接口', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 3, 'bidding_days': 5, 'create_time': '2020-02-29 12:30:47.0', 'bidding_start_time': '2020-02-29 12:31:03.0', 'full_time': '2020-03-03 10:01:18.0', 'status': 3}, {'id': 2, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:36:26.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 3, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:43:28.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 4, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:44:19.0', 'bidding_start_time': '2020-03-02 17:29:13.0', 'full_time': '2020-03-03 23:01:50.0', 'status': 3}, {'id': 5, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:06.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 6, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:57.0', 'bidding_start_time': '2020-02-29 13:24:59.0', 'full_time': '2020-02-29 13:25:02.0', 'status': 3}, {'id': 7, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': '2020-03-02 17:40:55.0', 'full_time': '2020-03-03 23:03:24.0', 'status': 3}, {'id': 8, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 9, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:33.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 10, 'member_id': 129, 'title': 'simpl', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:34.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 11, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:35.0', 'bidding_start_time': '2020-03-01 15:35:56.0', 'full_time': '2020-03-03 23:11:07.0', 'status': 3}, {'id': 12, 'member_id': 129, 'title': 'simple资金周转', 'amount': 10000.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:39.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 13, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:42.0', 'bidding_start_time': '2020-03-02 18:41:26.0', 'full_time': '2020-03-03 23:15:03.0', 'status': 3}, {'id': 14, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:43.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 15, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:45.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 16, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:46.0', 'bidding_start_time': '2020-03-02 21:29:51.0', 'full_time': '2020-03-03 22:26:28.0', 'status': 3}, {'id': 17, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:13.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 18, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:14.0', 'bidding_start_time': '2020-03-02 21:31:42.0', 'full_time': '2020-03-03 22:30:32.0', 'status': 3}, {'id': 19, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:15.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 20, 'member_id': 129, 'title': 'simple资金周转', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:16.0', 'bidding_start_time': '2020-03-03 10:01:07.0', 'full_time': '2020-03-03 23:19:55.0', 'status': 3}, {'id': 21, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:17.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 22, 'member_id': 129, 'title': 'simple资金周转', 'amount': 10000.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:22.0', 'bidding_start_time': '2020-03-01 15:36:21.0', 'full_time': '2020-03-03 23:22:19.0', 'status': 3}, {'id': 23, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:25.0', 'bidding_start_time': '2020-03-03 11:58:34.0', 'full_time': '2020-03-03 23:24:40.0', 'status': 3}, {'id': 24, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:27.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 25, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:28.0', 'bidding_start_time': '2020-03-03 11:58:40.0', 'full_time': '2020-03-03 23:26:47.0', 'status': 3}, {'id': 26, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:30.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 27, 'member_id': 1, 'title': '借钱实现财富自由', 'amount': 2000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:26:41.0', 'bidding_start_time': '2020-03-03 12:02:32.0', 'full_time': '2020-03-03 23:27:32.0', 'status': 3}, {'id': 28, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:27:52.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 29, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:27:53.0', 'bidding_start_time': '2020-03-03 13:22:59.0', 'full_time': '2020-03-03 23:31:21.0', 'status': 3}, {'id': 30, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:27:54.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 31, 'member_id': 129, 'title': 'simple资金周转', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:27:54.0', 'bidding_start_time': '2020-03-03 13:23:15.0', 'full_time': '2020-03-03 23:32:31.0', 'status': 3}, {'id': 32, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:27:55.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 33, 'member_id': 129, 'title': 'simple资金周转', 'amount': 10000.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:27:59.0', 'bidding_start_time': '2020-03-03 13:23:21.0', 'full_time': '2020-03-03 23:33:35.0', 'status': 3}, {'id': 34, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:28:02.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 35, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:28:04.0', 'bidding_start_time': '2020-03-03 13:34:38.0', 'full_time': '2020-03-03 23:35:00.0', 'status': 3}, {'id': 36, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:28:06.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 37, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:28:07.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 38, 'member_id': 1, 'title': '借钱实现财富自由', 'amount': 2000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:29:58.0', 'bidding_start_time': '2020-03-04 10:01:17.0', 'full_time': '2020-03-04 17:35:15.0', 'status': 3}, {'id': 39, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:03.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 40, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:04.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 41, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:05.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 42, 'member_id': 129, 'title': 'simple资金周转', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:06.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 43, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:07.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 44, 'member_id': 129, 'title': 'simple资金周转', 'amount': 10000.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:11.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 45, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:14.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 46, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:16.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 47, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:18.0', 'bidding_start_time': '2020-03-04 21:40:32.0', 'full_time': '2020-03-04 22:54:48.0', 'status': 3}, {'id': 48, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:30:19.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 49, 'member_id': 1, 'title': '借钱实现财富自由', 'amount': 2000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:32:48.0', 'bidding_start_time': '2020-03-04 21:44:55.0', 'full_time': '2020-03-04 23:03:41.0', 'status': 3}, {'id': 50, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:33:56.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 51, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:33:57.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 52, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:33:57.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 53, 'member_id': 129, 'title': 'simple资金周转', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:33:58.0', 'bidding_start_time': '2020-03-05 20:55:30.0', 'full_time': None, 'status': 2}, {'id': 54, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:33:59.0', 'bidding_start_time': '2020-03-05 20:58:10.0', 'full_time': None, 'status': 2}, {'id': 55, 'member_id': 129, 'title': 'simple资金周转', 'amount': 10000.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:34:03.0', 'bidding_start_time': '2020-03-05 21:15:15.0', 'full_time': None, 'status': 2}, {'id': 56, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:34:06.0', 'bidding_start_time': '2020-03-05 21:18:30.0', 'full_time': None, 'status': 2}, {'id': 57, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:34:07.0', 'bidding_start_time': '2020-03-05 21:35:02.0', 'full_time': None, 'status': 2}, {'id': 58, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:34:09.0', 'bidding_start_time': '2020-03-05 21:40:41.0', 'full_time': None, 'status': 2}, {'id': 59, 'member_id': 1, 'title': '借钱实现财富自由', 'amount': 2000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:34:10.0', 'bidding_start_time': '2020-03-03 14:07:44.0', 'full_time': '2020-03-03 23:35:34.0', 'status': 3}, {'id': 60, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 10.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:34:11.0', 'bidding_start_time': '2020-03-05 21:49:14.0', 'full_time': None, 'status': 2}, {'id': 61, 'member_id': 189, 'title': '借钱实现财富自由', 'amount': 2000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:44:52.0', 'bidding_start_time': '2020-03-05 22:00:49.0', 'full_time': None, 'status': 2}, {'id': 62, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 5, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:53.0', 'bidding_start_time': '2020-03-05 22:08:25.0', 'full_time': None, 'status': 2}, {'id': 63, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:53.0', 'bidding_start_time': '2020-03-05 22:09:07.0', 'full_time': None, 'status': 2}, {'id': 64, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 36, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:53.0', 'bidding_start_time': '2020-03-05 22:09:29.0', 'full_time': None, 'status': 2}, {'id': 65, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 10, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:54.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 66, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:54.0', 'bidding_start_time': '2020-03-06 10:46:18.0', 'full_time': None, 'status': 2}, {'id': 67, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 45, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:54.0', 'bidding_start_time': '2020-03-06 10:46:30.0', 'full_time': None, 'status': 2}, {'id': 68, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:54.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 69, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:54.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 70, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.2, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:55.0', 'bidding_start_time': '2020-03-07 16:02:08.0', 'full_time': None, 'status': 2}, {'id': 71, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.1, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:46:55.0', 'bidding_start_time': '2020-03-07 16:06:52.0', 'full_time': None, 'status': 2}, {'id': 72, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 5, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:21.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 73, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:21.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 74, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 36, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:22.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 75, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 10, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:22.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 76, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:23.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 77, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 45, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:23.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 78, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:23.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 79, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:24.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 80, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.2, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:24.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 81, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.1, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:48:25.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 82, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 5, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:47.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 83, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 1, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:47.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 84, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 36, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:47.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 85, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 10, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:48.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 86, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:49.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 87, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 45, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:49.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 88, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:49.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 89, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.3, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:50.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 90, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.2, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:50.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 91, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.1, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:50.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 92, 'member_id': 289, 'title': '借钱实现财富自由', 'amount': 2000.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 14:22:47.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 93, 'member_id': 289, 'title': '借钱实现财富自由', 'amount': 400.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 14:22:50.0', 'bidding_start_time': '2020-02-29 14:22:51.0', 'full_time': '2020-03-01 21:14:35.0', 'status': 3}, {'id': 94, 'member_id': 336, 'title': '正常添加项目', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:10.0', 'bidding_start_time': '2020-02-29 17:49:35.0', 'full_time': '2020-03-03 23:36:19.0', 'status': 3}, {'id': 95, 'member_id': 336, 'title': '1', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:11.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 96, 'member_id': 336, 'title': '01234567980123456798012345679801234567980123456798', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:12.0', 'bidding_start_time': None, 'full_time': None, 'status': 3}, {'id': 97, 'member_id': 336, 'title': '0123456798', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:13.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 98, 'member_id': 336, 'title': '借款金额为100的整数倍', 'amount': 100.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:13.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 99, 'member_id': 336, 'title': '年利率为24.0', 'amount': 10000.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:15.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 100, 'member_id': 336, 'title': '年利率为0.1', 'amount': 10000.0, 'loan_rate': 0.1, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:16.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_loans_5: 页索引为None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_5'>通过</button>
+    <div id='div_pt5_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_5'>通过</button>
+    <div id='div_pt5_5' class="collapse in" align="left">
+    <pre>
+    
+pt5_5: 项目列表接口返回的结果： {'code': 0, 'msg': 'OK', 'data': [{'id': 91, 'member_id': 190, 'title': 'abs', 'amount': 80000.0, 'loan_rate': 12.1, 'loan_term': 17, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:49:50.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 92, 'member_id': 289, 'title': '借钱实现财富自由', 'amount': 2000.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 14:22:47.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 93, 'member_id': 289, 'title': '借钱实现财富自由', 'amount': 400.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 14:22:50.0', 'bidding_start_time': '2020-02-29 14:22:51.0', 'full_time': '2020-03-01 21:14:35.0', 'status': 3}, {'id': 94, 'member_id': 336, 'title': '正常添加项目', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:10.0', 'bidding_start_time': '2020-02-29 17:49:35.0', 'full_time': '2020-03-03 23:36:19.0', 'status': 3}, {'id': 95, 'member_id': 336, 'title': '1', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:11.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 96, 'member_id': 336, 'title': '01234567980123456798012345679801234567980123456798', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:12.0', 'bidding_start_time': None, 'full_time': None, 'status': 3}, {'id': 97, 'member_id': 336, 'title': '0123456798', 'amount': 1000.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:13.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 98, 'member_id': 336, 'title': '借款金额为100的整数倍', 'amount': 100.0, 'loan_rate': 10.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:13.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 99, 'member_id': 336, 'title': '年利率为24.0', 'amount': 10000.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:15.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, {'id': 100, 'member_id': 336, 'title': '年利率为0.1', 'amount': 10000.0, 'loan_rate': 0.1, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 15:00:16.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_6' class='none'>
+    <td class='failCase'><div class='testcase'>test_loans_6: 页数为负值</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_6'>失败</button>
+    <div id='div_ft5_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_6'>失败</button>
+    <div id='div_ft5_6' class="collapse in" align="left">
+    <pre>
+    
+ft5_6: 项目列表接口返回的结果： {'code': 0, 'msg': 'OK', 'data': [{'id': 1, 'member_id': 1, 'title': '接口', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 3, 'bidding_days': 5, 'create_time': '2020-02-29 12:30:47.0', 'bidding_start_time': '2020-02-29 12:31:03.0', 'full_time': '2020-03-03 10:01:18.0', 'status': 3}, {'id': 2, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:36:26.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 3, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:43:28.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 4, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:44:19.0', 'bidding_start_time': '2020-03-02 17:29:13.0', 'full_time': '2020-03-03 23:01:50.0', 'status': 3}, {'id': 5, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:06.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 6, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:57.0', 'bidding_start_time': '2020-02-29 13:24:59.0', 'full_time': '2020-02-29 13:25:02.0', 'status': 3}, {'id': 7, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': '2020-03-02 17:40:55.0', 'full_time': '2020-03-03 23:03:24.0', 'status': 3}, {'id': 8, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 9, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:33.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 10, 'member_id': 129, 'title': 'simpl', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:34.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\library\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 70, in test_loans
+    raise e
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 65, in test_loans
+    self.assertEqual(res['code'],expected['code'])
+AssertionError: 0 != 1
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_7' class='none'>
+    <td class='failCase'><div class='testcase'>test_loans_7: 页索引为负数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_7'>失败</button>
+    <div id='div_ft5_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_7'>失败</button>
+    <div id='div_ft5_7' class="collapse in" align="left">
+    <pre>
+    
+ft5_7: 项目列表接口返回的结果： {'code': 0, 'msg': 'OK', 'data': [], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\library\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 70, in test_loans
+    raise e
+  File "D:\py26_api_test_v3\testcases\test_loans.py", line 65, in test_loans
+    self.assertEqual(res['code'],expected['code'])
+AssertionError: 0 != 2
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_login.TestLogin</td>
+    <td class="text-center">10</td>
+    <td class="text-center">9</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c6',10)" class="detail" id='c6'>详细</a></td>
+</tr>
+
+<tr id='pt6_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_01: 登录成功</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_1'>通过</button>
+    <div id='div_pt6_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_1'>通过</button>
+    <div id='div_pt6_1' class="collapse in" align="left">
+    <pre>
+    
+pt6_1: 测试用例中data的值是： {'mobile_phone': '15821865917', 'pwd': '12345678'}
+登录-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 169492.55, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1, 'token_info': {'token_type': 'Bearer', 'expires_in': '2020-03-07 17:10:53', 'token': 'eyJhbGciOiJIUzUxMiJ9.eyJtZW1iZXJfaWQiOjExMzk3LCJleHAiOjE1ODM1NzIyNTN9.Z6JSv9_3ClfAZ_ZU2XlIHxwcWTzcGW1LRFWtwYehs4khmQ7DDFYCygW1S8HznlRB5PJjX_4nZN3S6v0OCMkfDA'}}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_02: 手机号输入错误</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_2'>通过</button>
+    <div id='div_pt6_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_2'>通过</button>
+    <div id='div_pt6_2' class="collapse in" align="left">
+    <pre>
+    
+pt6_2: 测试用例中data的值是： {'mobile_phone': '1370000￥%aa', 'pwd': '12345679'}
+登录-测试用例执行结果： {'code': 2, 'msg': '无效的手机格式', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_03: 手机号输入大于11位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_3'>通过</button>
+    <div id='div_pt6_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_3'>通过</button>
+    <div id='div_pt6_3' class="collapse in" align="left">
+    <pre>
+    
+pt6_3: 测试用例中data的值是： {'mobile_phone': '137000022229', 'pwd': '12345680'}
+登录-测试用例执行结果： {'code': 2, 'msg': '无效的手机格式', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_04: 手机号输入小于11位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_4'>通过</button>
+    <div id='div_pt6_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_4'>通过</button>
+    <div id='div_pt6_4' class="collapse in" align="left">
+    <pre>
+    
+pt6_4: 测试用例中data的值是： {'mobile_phone': '1370000222', 'pwd': '12345681'}
+登录-测试用例执行结果： {'code': 2, 'msg': '无效的手机格式', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_05: 密码输入错误</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_5'>通过</button>
+    <div id='div_pt6_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_5'>通过</button>
+    <div id='div_pt6_5' class="collapse in" align="left">
+    <pre>
+    
+pt6_5: 测试用例中data的值是： {'mobile_phone': '15821865917', 'pwd': '12346800'}
+登录-测试用例执行结果： {'code': 1001, 'msg': '账号信息错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_06: 密码输入小于8位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_6'>通过</button>
+    <div id='div_pt6_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_6'>通过</button>
+    <div id='div_pt6_6' class="collapse in" align="left">
+    <pre>
+    
+pt6_6: 测试用例中data的值是： {'mobile_phone': '15821865917', 'pwd': '1234'}
+登录-测试用例执行结果： {'code': 1001, 'msg': '账号信息错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_07: 密码输入大于16位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_7'>通过</button>
+    <div id='div_pt6_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_7'>通过</button>
+    <div id='div_pt6_7' class="collapse in" align="left">
+    <pre>
+    
+pt6_7: 测试用例中data的值是： {'mobile_phone': '15821865917', 'pwd': '12345682901234567'}
+登录-测试用例执行结果： {'code': 1001, 'msg': '账号信息错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_08: 手机号为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_8'>通过</button>
+    <div id='div_pt6_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_8'>通过</button>
+    <div id='div_pt6_8' class="collapse in" align="left">
+    <pre>
+    
+pt6_8: 测试用例中data的值是： {'mobile_phone': None, 'pwd': '12345681'}
+登录-测试用例执行结果： {'code': 2, 'msg': '手机号码为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt6_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_09: 密码为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_9'>通过</button>
+    <div id='div_pt6_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_9'>通过</button>
+    <div id='div_pt6_9' class="collapse in" align="left">
+    <pre>
+    
+pt6_9: 测试用例中data的值是： {'mobile_phone': '1370000aa@#', 'pwd': None}
+登录-测试用例执行结果： {'code': 2, 'msg': '密码为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft6_10' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_10: 手机号未注册</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft6_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft6_10'>失败</button>
+    <div id='div_ft6_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft6_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft6_10'>失败</button>
+    <div id='div_ft6_10' class="collapse in" align="left">
+    <pre>
+    
+ft6_10: 测试用例中data的值是： {'mobile_phone': '15899999999', 'pwd': '12345678'}
+登录-测试用例执行结果： {'code': 1001, 'msg': '账号信息错误', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+Traceback (most recent call last):
+  File "D:\py26_api_test_v3\library\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\py26_api_test_v3\testcases\test_login.py", line 57, in test_login
+    raise e
+  File "D:\py26_api_test_v3\testcases\test_login.py", line 50, in test_login
+    self.assertEqual(res['code'],expected['code'])
+AssertionError: 1001 != 2
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_main_stream.TestMainStream</td>
+    <td class="text-center">12</td>
+    <td class="text-center">12</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c7',12)" class="detail" id='c7'>详细</a></td>
+</tr>
+
+<tr id='pt7_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_01: 管理员注册</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_1'>通过</button>
+    <div id='div_pt7_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_1'>通过</button>
+    <div id='div_pt7_1' class="collapse in" align="left">
+    <pre>
+    
+pt7_1: 请求参数： {'mobile_phone': '13925359663', 'pwd': '12345678', 'type': 0, 'reg_name': '34254sdfs'}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778167, 'reg_name': '34254sdfs', 'mobile_phone': '13925359663'}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_02: 管理员正常登录</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_2'>通过</button>
+    <div id='div_pt7_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_2'>通过</button>
+    <div id='div_pt7_2' class="collapse in" align="left">
+    <pre>
+    
+pt7_2: 请求参数： {'mobile_phone': '13925359663', 'pwd': '12345678'}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778167, 'leave_amount': 0.0, 'mobile_phone': '13925359663', 'reg_name': '34254sdfs', 'reg_time': '2020-03-07 17:05:55.0', 'type': 0, 'token_info': {'token_type': 'Bearer', 'expires_in': '2020-03-07 17:10:55', 'token': 'eyJhbGciOiJIUzUxMiJ9.eyJtZW1iZXJfaWQiOjc3NzgxNjcsImV4cCI6MTU4MzU3MjI1NX0.LtyhW0pIG-vHvxKiK6HpCx1n7Rk-wzwV7xLn_U3mwqKcn_JjD5hVffodwwFlAoGTecgNaSGh4FqKasiwIV_c6Q'}}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_03: 管理员加标</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_3'>通过</button>
+    <div id='div_pt7_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_3'>通过</button>
+    <div id='div_pt7_3' class="collapse in" align="left">
+    <pre>
+    
+pt7_3: 请求参数： {'member_id': 7778167, 'title': '借钱实现财富自由', 'amount': 40000, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'timestamp': 1583571956, 'sign': 'Ruol2qNKlbzkGSV51fOyE9mB79hqtHObK50Yyd6F57GWKZFVogdE36+YcN/hb4ui13WLeFuSCBSTHHB3DYpdjEZJaL31IuzBhje04vEh6Rv6gQVn/F9kiKsAoHoxT+vbNU5FQzP2Z4WZXUitnuQAljCNTHBQJPhCtgMIMq1HPCg='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 35177, 'member_id': 7778167, 'title': '借钱实现财富自由', 'amount': 40000.0, 'loan_rate': 12.0, 'loan_term': 3, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-03-07 17:05:56.0', 'bidding_start_time': None, 'full_time': None, 'status': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_04: 管理员审核</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_4'>通过</button>
+    <div id='div_pt7_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_4'>通过</button>
+    <div id='div_pt7_4' class="collapse in" align="left">
+    <pre>
+    
+pt7_4: 请求参数： {'loan_id': 35177, 'approved_or_not': True, 'timestamp': 1583571956, 'sign': 'uipnD7H+e5/WjP+HiBL6q6r+iURlHMNimCrzMLq93LWuhZ3V6kmffjXjOzl8eu9j5VeVbcfWA7uyQCO9WC0pq3vBmFrEZR/nBao0pZEGx8QPxo2A+u7j60mI1qTrR9yGyNFbp5kaVm+vOEq5TV1X18AXKItklvQUxco9r2wvAoQ='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_05: 用户注册</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_5'>通过</button>
+    <div id='div_pt7_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_5'>通过</button>
+    <div id='div_pt7_5' class="collapse in" align="left">
+    <pre>
+    
+pt7_5: 请求参数： {'mobile_phone': '13985818277', 'pwd': '12345678', 'type': 1, 'reg_name': '34254sdfs'}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778168, 'reg_name': '34254sdfs', 'mobile_phone': '13985818277'}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_06: 投资人正常登录</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_6'>通过</button>
+    <div id='div_pt7_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_6'>通过</button>
+    <div id='div_pt7_6' class="collapse in" align="left">
+    <pre>
+    
+pt7_6: 请求参数： {'mobile_phone': '13985818277', 'pwd': '12345678'}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778168, 'leave_amount': 0.0, 'mobile_phone': '13985818277', 'reg_name': '34254sdfs', 'reg_time': '2020-03-07 17:05:56.0', 'type': 1, 'token_info': {'token_type': 'Bearer', 'expires_in': '2020-03-07 17:10:57', 'token': 'eyJhbGciOiJIUzUxMiJ9.eyJtZW1iZXJfaWQiOjc3NzgxNjgsImV4cCI6MTU4MzU3MjI1N30.yI4904bPpscVxE-wrJS9UaDIk1jdbmVLyAor5tV6gKuaxi5W_hwqlCHm2s8v8C5sw65dijywlH3eRT1B17FM6g'}}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_07: 获取用户信息</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_7'>通过</button>
+    <div id='div_pt7_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_7'>通过</button>
+    <div id='div_pt7_7' class="collapse in" align="left">
+    <pre>
+    
+pt7_7: 请求参数： {'timestamp': 1583571957, 'sign': 'yICtC0xlEMhuTdsm6/Yud+jlnS/eTAyusu+T6rLQDcF7PJUHzLCEw4uQ8J+hNcJoktFQEi+QznaZ/DErQGHeITx9I8LD9vroYIoXtn9uJAYue8yIMVmcwVLJgMys6ZgLnrKEOWbQz/LEpPJvkOQNdWFthdxUmRKdb+EdNeo9YSw='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778168, 'leave_amount': 0.0, 'mobile_phone': '13985818277', 'reg_name': '34254sdfs', 'reg_time': '2020-03-07 17:05:56.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_08: 更改昵称</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_8'>通过</button>
+    <div id='div_pt7_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_8'>通过</button>
+    <div id='div_pt7_8' class="collapse in" align="left">
+    <pre>
+    
+pt7_8: 请求参数： {'member_id': 7778168, 'reg_name': 'ann-666', 'timestamp': 1583571957, 'sign': 'VipHR027QAcQGQ5sQIfsJg1QPQiJ7Nf+QqzqS/9hT3Vlm/8jSWI3mg+bhDIm7D//gABlMoRHb2JoQ3wtBJBC5yjpNgRGul9gDflWcMkmMU7fjT9W4QwexwnXnqLo03g/Oj+/AUaJG+omvcQYmOtzfNVlwof9hDkuitaFw9NiEGc='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778168, 'leave_amount': 0.0, 'mobile_phone': '13985818277', 'reg_name': 'ann-666', 'reg_time': '2020-03-07 17:05:56.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_09: 充值</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_9'>通过</button>
+    <div id='div_pt7_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_9'>通过</button>
+    <div id='div_pt7_9' class="collapse in" align="left">
+    <pre>
+    
+pt7_9: 请求参数： {'member_id': 7778168, 'amount': 20000, 'timestamp': 1583571957, 'sign': 'an8S2g6Mh0h3GQIePGu0RQt1c/s3ET3WKwfirtJWU9LvMaYZ82BcQ5aqSwvKHCjkWXx8Pht8TUfYPJiswvidNDov5BXk+7GhPSzP3Vk9TpSOuVbYnnxOshzCV3xs/HqRaRyrK/gcVYnXnzT8Jf9Y0IJMHGo0ywxLLOBMAGx6BU8='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778168, 'leave_amount': 20000.0, 'mobile_phone': '13985818277', 'reg_name': 'ann-666', 'reg_time': '2020-03-07 17:05:56.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_10: 投资人正常投资</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_10'>通过</button>
+    <div id='div_pt7_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_10'>通过</button>
+    <div id='div_pt7_10' class="collapse in" align="left">
+    <pre>
+    
+pt7_10: 请求参数： {'member_id': 7778168, 'loan_id': 35177, 'amount': 300, 'timestamp': 1583571958, 'sign': 'C1uUu/PJrwxivlJkMRX6i5qNPS4jhH5cebunP6TImCMwhgx/i5twxHxTJYRxLh74Aw996R2EI18pNnt+Ze9emiiI1thGzmpi59CDM25b5rYNsSoTzqDqsmhG244ejbEg3ijCqN7rzDm2rkpbCxkO3yVn4D5Mlr24fNK5X+jBWoY='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 3712, 'member_id': 7778168, 'loan_id': 35177, 'amount': 300.0, 'create_time': '2020-03-07 17:05:58', 'is_valid': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_11: 取现</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_11'>通过</button>
+    <div id='div_pt7_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_11'>通过</button>
+    <div id='div_pt7_11' class="collapse in" align="left">
+    <pre>
+    
+pt7_11: 请求参数： {'member_id': 7778168, 'amount': 600, 'timestamp': 1583571958, 'sign': 'bZBWFvFjxUsMAk26VjUgeUgg5nyuADWg1qaWgQ1DnvJYL4Cz2QvsG56UG+gEeSDh5iwl9Fu4c7ATkJ5LDu4Ad0FIXeMYzeyDs/ixdUyBfY0VFsq6JhVPmJX1XHmNHv5vYQthJVU9ZGc5gRC1PsVqy4z6UTlFSXwJ4u6cKfXTz/o='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': {'id': 7778168, 'leave_amount': 19100.0, 'mobile_phone': '13985818277', 'reg_name': 'ann-666', 'reg_time': '2020-03-07 17:05:56.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt7_12' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_main_stream_12: 获取项目列表</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_12'>通过</button>
+    <div id='div_pt7_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_12'>通过</button>
+    <div id='div_pt7_12' class="collapse in" align="left">
+    <pre>
+    
+pt7_12: 请求参数： {'pageIndex': 1, 'pageSize': 20, 'timestamp': 1583571958, 'sign': 'joc3rAsBkgWVU3vPn5UomiuyfPQwL4EAsqLfrbPTsgwDwjSMIIi8rvpKsx17ywvUptFUVcGuFNYLXcDXb6yr2PVTbx9U5y+GEd8zJjTZrz+7r0XUddYPrKk+Gqcsm22pbxqH4pPYhOw/wckOEL8p1Li3ZVF4K3f10wvVeo9BH0M='}
+预期结果 {'code': 0, 'msg': 'OK'}
+实际结果 {'code': 0, 'msg': 'OK', 'data': [{'id': 1, 'member_id': 1, 'title': '接口', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 3, 'bidding_days': 5, 'create_time': '2020-02-29 12:30:47.0', 'bidding_start_time': '2020-02-29 12:31:03.0', 'full_time': '2020-03-03 10:01:18.0', 'status': 3}, {'id': 2, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:36:26.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 3, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:43:28.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 4, 'member_id': 1, 'title': '接口自动化测试', 'amount': 100000.0, 'loan_rate': 12.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 12:44:19.0', 'bidding_start_time': '2020-03-02 17:29:13.0', 'full_time': '2020-03-03 23:01:50.0', 'status': 3}, {'id': 5, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:06.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 6, 'member_id': 146, 'title': '锋芒的22期python', 'amount': 100.0, 'loan_rate': 18.0, 'loan_term': 4, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:24:57.0', 'bidding_start_time': '2020-02-29 13:24:59.0', 'full_time': '2020-02-29 13:25:02.0', 'status': 3}, {'id': 7, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6300.0, 'loan_rate': 12.0, 'loan_term': 12, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': '2020-03-02 17:40:55.0', 'full_time': '2020-03-03 23:03:24.0', 'status': 3}, {'id': 8, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6500.0, 'loan_rate': 24.0, 'loan_term': 6, 'loan_date_type': 1, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:32.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 9, 'member_id': 129, 'title': 'simple资金周转', 'amount': 6600.0, 'loan_rate': 12.6, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:33.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}, {'id': 10, 'member_id': 129, 'title': 'simpl', 'amount': 1000000.0, 'loan_rate': 23.9, 'loan_term': 30, 'loan_date_type': 2, 'bidding_days': 5, 'create_time': '2020-02-29 13:25:34.0', 'bidding_start_time': None, 'full_time': None, 'status': 5}], 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_recharge.TestRecharge</td>
+    <td class="text-center">6</td>
+    <td class="text-center">6</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c8',6)" class="detail" id='c8'>详细</a></td>
+</tr>
+
+<tr id='pt8_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_recharge_1: 充值成功</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt8_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_1'>通过</button>
+    <div id='div_pt8_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt8_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_1'>通过</button>
+    <div id='div_pt8_1' class="collapse in" align="left">
+    <pre>
+    
+pt8_1: 测试用例中data的值是： {'member_id': 11397, 'amount': 100000, 'timestamp': 1583571959, 'sign': 'RTHQ6EgNEHuvBBdKjDTiDuN89vr6Ps59BVAgEPW1hiQAXZSf4B9emT4hSO9D3UfDIkdlt1UVpa4OB8tBK9fCD4NLQn+5n69AAnxuzjbltdWSotuaHrOqyFcsxDtCVnRkA3JVGtDnEZndLPPTFqqW7nCuYhzOVD/RorqbKFhPPOQ='}
+data金额的值是： 100000
+充值-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 269492.55, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt8_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_recharge_2: 充值id与token不一致</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt8_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_2'>通过</button>
+    <div id='div_pt8_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt8_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_2'>通过</button>
+    <div id='div_pt8_2' class="collapse in" align="left">
+    <pre>
+    
+pt8_2: 测试用例中data的值是： {'member_id': 958001, 'amount': 1001, 'timestamp': 1583571959, 'sign': 'bp23fCy5E8PZn6J6diHCUBH8mqgqYH8R7WZ9VSjfP9o4Y5WdNQUEodv1f14r8X37cr5rMFLwVLE18Vld8cg/Q8e9PoembiyCJXc4bw8+GG8P7g1T8DLrfanvAnxyQFGE6MdwErQoyUKDrpYgvYW+fJM/53l9UProcuMDxtd8ZbI='}
+data金额的值是： 1001
+充值-测试用例执行结果： {'code': 1007, 'msg': '无权限访问，请检查参数', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt8_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_recharge_3: 充值id为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt8_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_3'>通过</button>
+    <div id='div_pt8_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt8_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_3'>通过</button>
+    <div id='div_pt8_3' class="collapse in" align="left">
+    <pre>
+    
+pt8_3: 测试用例中data的值是： {'member_id': None, 'amount': 1000, 'timestamp': 1583571960, 'sign': 'meZPzJJDKiRnQ+fC0PSqeCSHqorKZSq5g9lmML5X/pQSg84OqUPNlLR0lCYaYCC2S/RS+BMZbhoJR4aZeRzo2nguB55VUpS22ANJF9dMCv4EAEUkVG3ptE6Qncr2POjLvDD3YrcvcupoImIbW0OoxmU6pAa13KV2o0MTO7B4dpg='}
+data金额的值是： 1000
+充值-测试用例执行结果： {'code': 1, 'msg': '用户id为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt8_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_recharge_4: 充值金额为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt8_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_4'>通过</button>
+    <div id='div_pt8_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt8_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_4'>通过</button>
+    <div id='div_pt8_4' class="collapse in" align="left">
+    <pre>
+    
+pt8_4: 测试用例中data的值是： {'member_id': 11397, 'amount': None, 'timestamp': 1583571960, 'sign': 'DXltug4pBB4q3qfnD2NKr7c76r7zMgSGTTFdnPeFsHheg5ML/cF8hTJ6bnfL8qOnypit61hF4Yscrc/mDHpGo5oMUD/9RYeRXxJXuO8RO2O6wnrPhrxeNe4Oi3NDWBhLxKpHGT4GgRhByYaGbLpPR4FYpJikKeqQqsOqtXSdbHw='}
+data金额的值是： None
+充值-测试用例执行结果： {'code': 2, 'msg': '数字格式化异常', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt8_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_recharge_5: 充值金额为负数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt8_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_5'>通过</button>
+    <div id='div_pt8_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt8_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_5'>通过</button>
+    <div id='div_pt8_5' class="collapse in" align="left">
+    <pre>
+    
+pt8_5: 测试用例中data的值是： {'member_id': 11397, 'amount': -1000, 'timestamp': 1583571960, 'sign': 'dvxPY+0Un47+AHAPy8USe4kWK8NjXFJ4HpKoYjcSZBYUCyEiU087yXcWAfdaEmiG3TWTwxdmXCmuooq1+tXweBOyPFRVDBFU8p9cTHp0+NAFBiDO+W/LnxTjM+VOqawsyC51BFsOilBi3aQQU2vDwhPJFeVXOaltf/lmwaqaoWo='}
+data金额的值是： -1000
+充值-测试用例执行结果： {'code': 2, 'msg': '余额必须大于0并且小于或者等于500000', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt8_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_recharge_6: 充值金额大于50万</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt8_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_6'>通过</button>
+    <div id='div_pt8_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt8_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_6'>通过</button>
+    <div id='div_pt8_6' class="collapse in" align="left">
+    <pre>
+    
+pt8_6: 测试用例中data的值是： {'member_id': 11397, 'amount': 666666, 'timestamp': 1583571960, 'sign': 'AV8sjsYAtMhiVOLKOOhGeAaxIHn3dtmgmGtBExp5++WUBsItXJxtq6FlxexGEkpmxYkyCExVlJbch6sBdmZY1Jz1FTCqL0nqTFWHUf54ED8IL7eMJ6HqdRgvHv2SuTN1taUMK0HXGOtYIydN9qd8qjN/ibZbFffO7Vz4IHiuUeU='}
+data金额的值是： 666666
+充值-测试用例执行结果： {'code': 2, 'msg': '余额必须大于0并且小于或者等于500000', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_register.TestRegister</td>
+    <td class="text-center">12</td>
+    <td class="text-center">12</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c9',12)" class="detail" id='c9'>详细</a></td>
+</tr>
+
+<tr id='pt9_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_01: 注册成功-带注册名</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_1'>通过</button>
+    <div id='div_pt9_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_1'>通过</button>
+    <div id='div_pt9_1' class="collapse in" align="left">
+    <pre>
+    
+pt9_1: 测试用例中data的值是： {'mobile_phone': '13887957739', 'pwd': '12345678', 'reg_name': 'ann', 'type': 1}
+注册-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 7778169, 'reg_name': 'ann', 'mobile_phone': '13887957739'}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_02: 注册成功-不带注册名</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_2'>通过</button>
+    <div id='div_pt9_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_2'>通过</button>
+    <div id='div_pt9_2' class="collapse in" align="left">
+    <pre>
+    
+pt9_2: 测试用例中data的值是： {'mobile_phone': '13895870168', 'pwd': '12345679'}
+注册-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 7778170, 'reg_name': '小柠檬', 'mobile_phone': '13895870168'}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_03: 手机号-大于11位数字</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_3'>通过</button>
+    <div id='div_pt9_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_3'>通过</button>
+    <div id='div_pt9_3' class="collapse in" align="left">
+    <pre>
+    
+pt9_3: 测试用例中data的值是： {'mobile_phone': '137000011119', 'pwd': '12345680', 'reg_name': 'ann'}
+注册-测试用例执行结果： {'code': 2, 'msg': '无效的手机格式', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_04: 手机号-小于11位数字</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_4'>通过</button>
+    <div id='div_pt9_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_4'>通过</button>
+    <div id='div_pt9_4' class="collapse in" align="left">
+    <pre>
+    
+pt9_4: 测试用例中data的值是： {'mobile_phone': '1370000', 'pwd': '12345681', 'reg_name': 'ann'}
+注册-测试用例执行结果： {'code': 2, 'msg': '无效的手机格式', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_05: 手机号-11位包含非数字</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_5'>通过</button>
+    <div id='div_pt9_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_5'>通过</button>
+    <div id='div_pt9_5' class="collapse in" align="left">
+    <pre>
+    
+pt9_5: 测试用例中data的值是： {'mobile_phone': '1370000aa@#', 'pwd': '12345682', 'reg_name': 'ann'}
+注册-测试用例执行结果： {'code': 2, 'msg': '无效的手机格式', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_06: 密码小于8位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_6'>通过</button>
+    <div id='div_pt9_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_6'>通过</button>
+    <div id='div_pt9_6' class="collapse in" align="left">
+    <pre>
+    
+pt9_6: 测试用例中data的值是： {'mobile_phone': '13700003333', 'pwd': '123'}
+注册-测试用例执行结果： {'code': 2, 'msg': '密码格式为8到16位', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_07: 密码大于16位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_7'>通过</button>
+    <div id='div_pt9_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_7'>通过</button>
+    <div id='div_pt9_7' class="collapse in" align="left">
+    <pre>
+    
+pt9_7: 测试用例中data的值是： {'mobile_phone': '13821497943', 'pwd': '123456890123456799999'}
+注册-测试用例执行结果： {'code': 2, 'msg': '密码格式为8到16位', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_08: 手机号为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_8'>通过</button>
+    <div id='div_pt9_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_8'>通过</button>
+    <div id='div_pt9_8' class="collapse in" align="left">
+    <pre>
+    
+pt9_8: 测试用例中data的值是： {'mobile_phone': None, 'pwd': '12345685', 'reg_name': 'ann'}
+注册-测试用例执行结果： {'code': 1, 'msg': '手机号为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_09: 密码为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_9'>通过</button>
+    <div id='div_pt9_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_9'>通过</button>
+    <div id='div_pt9_9' class="collapse in" align="left">
+    <pre>
+    
+pt9_9: 测试用例中data的值是： {'mobile_phone': '13700005555', 'pwd': None, 'reg_name': 'ann'}
+注册-测试用例执行结果： {'code': 1, 'msg': '密码为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_10: 类型非0和1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_10'>通过</button>
+    <div id='div_pt9_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_10'>通过</button>
+    <div id='div_pt9_10' class="collapse in" align="left">
+    <pre>
+    
+pt9_10: 测试用例中data的值是： {'mobile_phone': '13700006666', 'pwd': '12345687', 'type': 16}
+注册-测试用例执行结果： {'code': 2, 'msg': '不支持的用户类型', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_11: 注册名大于10位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_11'>通过</button>
+    <div id='div_pt9_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_11'>通过</button>
+    <div id='div_pt9_11' class="collapse in" align="left">
+    <pre>
+    
+pt9_11: 测试用例中data的值是： {'mobile_phone': '13700007777', 'pwd': '12345688', 'reg_name': 'ann12345678'}
+注册-测试用例执行结果： {'code': 2, 'msg': '用户昵称长度超过10位', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt9_12' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_register_12: 已经注册的手机号</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_12'>通过</button>
+    <div id='div_pt9_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_12'>通过</button>
+    <div id='div_pt9_12' class="collapse in" align="left">
+    <pre>
+    
+pt9_12: 测试用例中data的值是： {'mobile_phone': '15821865916', 'pwd': '12345689', 'reg_name': 'ann'}
+注册-测试用例执行结果： {'code': 2, 'msg': '账号已存在', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_update.TestUpdate</td>
+    <td class="text-center">6</td>
+    <td class="text-center">6</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c10',6)" class="detail" id='c10'>详细</a></td>
+</tr>
+
+<tr id='pt10_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_update_1: 更新用户信息成功（普通用户）</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt10_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt10_1'>通过</button>
+    <div id='div_pt10_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt10_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt10_1'>通过</button>
+    <div id='div_pt10_1' class="collapse in" align="left">
+    <pre>
+    
+pt10_1: 更新昵称接口返回的结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 269492.55, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt10_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_update_2: 普通用户更新管理员的用户信息</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt10_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt10_2'>通过</button>
+    <div id='div_pt10_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt10_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt10_2'>通过</button>
+    <div id='div_pt10_2' class="collapse in" align="left">
+    <pre>
+    
+pt10_2: 更新昵称接口返回的结果： {'code': 1007, 'msg': '无权限访问，请检查参数', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt10_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_update_3: 用户id为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt10_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt10_3'>通过</button>
+    <div id='div_pt10_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt10_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt10_3'>通过</button>
+    <div id='div_pt10_3' class="collapse in" align="left">
+    <pre>
+    
+pt10_3: 更新昵称接口返回的结果： {'code': 1, 'msg': '用户id为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt10_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_update_4: 昵称为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt10_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt10_4'>通过</button>
+    <div id='div_pt10_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt10_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt10_4'>通过</button>
+    <div id='div_pt10_4' class="collapse in" align="left">
+    <pre>
+    
+pt10_4: 更新昵称接口返回的结果： {'code': 1, 'msg': '用户名为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt10_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_update_5: 用户id不存在</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt10_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt10_5'>通过</button>
+    <div id='div_pt10_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt10_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt10_5'>通过</button>
+    <div id='div_pt10_5' class="collapse in" align="left">
+    <pre>
+    
+pt10_5: 更新昵称接口返回的结果： {'code': 2, 'msg': '会员不存在', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt10_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_update_6: 昵称大于10位</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt10_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt10_6'>通过</button>
+    <div id='div_pt10_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt10_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt10_6'>通过</button>
+    <div id='div_pt10_6' class="collapse in" align="left">
+    <pre>
+    
+pt10_6: 更新昵称接口返回的结果： {'code': 2, 'msg': '用户昵称长度超过10位', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_withdraw.TestWithdraw</td>
+    <td class="text-center">11</td>
+    <td class="text-center">11</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c11',11)" class="detail" id='c11'>详细</a></td>
+</tr>
+
+<tr id='pt11_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_01: 提现成功-整数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_1'>通过</button>
+    <div id='div_pt11_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_1'>通过</button>
+    <div id='div_pt11_1' class="collapse in" align="left">
+    <pre>
+    
+pt11_1: 测试用例中data的值是： {'member_id': 11397, 'amount': 100, 'timestamp': 1583571968, 'sign': 'qDPLCvbmTaYduRRNaM7zkDf+Q99RSEV2SEV0CHwhxyjxu6lGTL6Wloa+thXIKwPecX4npiK1yqmtfJsayTQlcHI4kACVpcM4hcDtgz6kspSfDpmkoWb6FjNUlZ9OwqYKSA6L7wTrDRYrcEerAi8MCmKTOkcsCoG14kk/1K8ey4E='}
+提现-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 269392.55, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_02: 提现成功-1位小数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_2'>通过</button>
+    <div id='div_pt11_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_2'>通过</button>
+    <div id='div_pt11_2' class="collapse in" align="left">
+    <pre>
+    
+pt11_2: 测试用例中data的值是： {'member_id': 11397, 'amount': 100.5, 'timestamp': 1583571969, 'sign': 'j4DstkBAt+DQm/7XzHsCy1k/D+fi39Hp0PdBz+Yddf1d2aEQwgeLb3tr1dAIvLJPEWbulL0hQq8Mw3WjtsEERxnnUtNULtY7KKshsdX3WtWuS2Qh2c4mfHDyrODEPLMdszaVWrj2u+IjvUy3CJPqXN5Mui/OpMCmyAnhFT14Fes='}
+提现-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 269292.05, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_03: 提现成功-2位小数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_3'>通过</button>
+    <div id='div_pt11_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_3'>通过</button>
+    <div id='div_pt11_3' class="collapse in" align="left">
+    <pre>
+    
+pt11_3: 测试用例中data的值是： {'member_id': 11397, 'amount': 100.99, 'timestamp': 1583571969, 'sign': 'iBvuIJva0uR1AVpb9nT7JBMvM76Mh3+3aO1fbUQG3pxdAEOrQOlN4q28OiHbL71ihTM/GkGWLFj6UgRfgE+uT8SIYI/1VY7bjpEzu8Di5qXu+Ms4CEvs7Ki0b2t8l9EH8nL67JMbzV+TR758Pk5Tw3As5hmep2upj4ZcXVpcn+M='}
+提现-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 269191.06, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_04: 提现金额为0</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_4'>通过</button>
+    <div id='div_pt11_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_4'>通过</button>
+    <div id='div_pt11_4' class="collapse in" align="left">
+    <pre>
+    
+pt11_4: 测试用例中data的值是： {'member_id': 11397, 'amount': 0, 'timestamp': 1583571970, 'sign': 'LqwgjeTwtTsPdT4tJUXPR9ueWwfMdoEc1NLIeUWQI/CcAZjVX7TMzJcq/aSqJECHWT6yquMRNMLQ2GO/FeqEBRsOopxa4fT+Ht85cP2y30EOXEV3PlD6K0bWGr61hY0brPxsw1EgD5QHEDKGKMfvK1MfUN2czDJmGW19Avls+iw='}
+提现-测试用例执行结果： {'code': 0, 'msg': 'OK', 'data': {'id': 11397, 'leave_amount': 269191.06, 'mobile_phone': '15821865917', 'reg_name': 'ann0303', 'reg_time': '2020-03-02 13:31:47.0', 'type': 1}, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_05: 提现金额大于可用余额</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_5'>通过</button>
+    <div id='div_pt11_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_5'>通过</button>
+    <div id='div_pt11_5' class="collapse in" align="left">
+    <pre>
+    
+pt11_5: 测试用例中data的值是： {'member_id': 11397, 'amount': 500000, 'timestamp': 1583571970, 'sign': 'ptCh7ElKWOHpkjy+853E6tpuaVUqzoU8V17hxbntNiHT+KtzqHxl/azT/+fvjNBvCjI5mngDuZfkOAaxTfoAAWW3NqespCXRbtcRotUYIyklkR0Liseay78rJfEg1V8aF3an0uumlJVr6wHxN86BiNJKn/qZkXPFVziaUHONaQY='}
+提现-测试用例执行结果： {'code': 1002, 'msg': '余额不足', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_06: 提现金额大于50万</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_6'>通过</button>
+    <div id='div_pt11_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_6'>通过</button>
+    <div id='div_pt11_6' class="collapse in" align="left">
+    <pre>
+    
+pt11_6: 测试用例中data的值是： {'member_id': 11397, 'amount': 666666, 'timestamp': 1583571970, 'sign': 'L+6cXeFKQMwyLyClydEG3HjJpJdO8AuP+4WuQWuABLLiSkQjIcFh8HyhWpND5ptq0u6J6ha2TCfynmM99A0Vr0nL7DdQJGYyGerv48zuoLIwZ0QqzC96ipimiJ6hPCwFBZtBxww0cI/7o2wMIuR5ojLeR14eyG/JKUiJO8oMxmM='}
+提现-测试用例执行结果： {'code': 2, 'msg': '余额必须大于0并且小于或者等于5000000', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_07: 提现金额为负数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_7'>通过</button>
+    <div id='div_pt11_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_7'>通过</button>
+    <div id='div_pt11_7' class="collapse in" align="left">
+    <pre>
+    
+pt11_7: 测试用例中data的值是： {'member_id': 11397, 'amount': -10, 'timestamp': 1583571971, 'sign': 'UtSLktRhg9mzQudi65cmaOPmeW3u7e+TgovNqpIVhLzgyAM3tMIC/M1zdtQWswhD90kUxhPmVwiGsrvmNgaG8YP7VNEhv5PhhQGfWoj9gJ+TbLMxYUujhkKH20ZzyM9OUkb9UZGm8SYMv8g94jw2S/fye4wUResVNLN/CBm8CDw='}
+提现-测试用例执行结果： {'code': 2, 'msg': '余额必须大于0并且小于或者等于5000000', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_08: 会员id不存在</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_8'>通过</button>
+    <div id='div_pt11_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_8'>通过</button>
+    <div id='div_pt11_8' class="collapse in" align="left">
+    <pre>
+    
+pt11_8: 测试用例中data的值是： {'member_id': 999999, 'amount': 666, 'timestamp': 1583571971, 'sign': 'P4GPtc8nquPX695wZdL615aGNuB4yVUSmgh1hLAqcERztGRzEdZ08pQqPi6C0Y4fW2f3s1IwNtI4BN1pbJ0ZrLRrIK9ZxPHdm3Y2P8AygN1QaYH7KT3NZGhlEkcUVMGEfJrSDaQAPhrZFOqFGu2O64+c/CPK6IBe4u/FNbZ5rwQ='}
+提现-测试用例执行结果： {'code': 2, 'msg': '会员不存在', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_09: 会员id与token不一致</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_9'>通过</button>
+    <div id='div_pt11_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_9'>通过</button>
+    <div id='div_pt11_9' class="collapse in" align="left">
+    <pre>
+    
+pt11_9: 测试用例中data的值是： {'member_id': 958001, 'amount': 669, 'timestamp': 1583571971, 'sign': 'BxeZp8W95Pn1D7umAM4DvhAdjgiuaczDFn4rFy++SRnG+JvgJ3y/TrU6zCPfqnlyH9jd92mR7k/3urfacdM5eYGsPgjxNhz+jvW9slHFtOaZfuGBTEJSReEyR6icUXeFdrATIxyo0OzTp/NwFfC6vB17q00QP6NtKRG1kGypjiA='}
+提现-测试用例执行结果： {'code': 2, 'msg': '会员不存在', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_10: 提现金额为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_10'>通过</button>
+    <div id='div_pt11_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_10'>通过</button>
+    <div id='div_pt11_10' class="collapse in" align="left">
+    <pre>
+    
+pt11_10: 测试用例中data的值是： {'member_id': 11397, 'amount': None, 'timestamp': 1583571971, 'sign': 'Ou6sMu6AnmIO4+5QZGRqrVW3sFOMOeQt59hrbAgSRq6U0vDbQsW88LA6vVQvj+tbUSusy+dkKbjMc+AaRm751XFnFDwwww/WmgC0SBQkGhGLvYZHt67Ir+KlDzf1VN07+LvZn7i+CHXpyG2LSuKktqzYtg4RytRi5H9rvRhc2og='}
+提现-测试用例执行结果： {'code': 1, 'msg': '余额为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt11_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_withdraw_11: 会员id为空</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt11_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_11'>通过</button>
+    <div id='div_pt11_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt11_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_11'>通过</button>
+    <div id='div_pt11_11' class="collapse in" align="left">
+    <pre>
+    
+pt11_11: 测试用例中data的值是： {'member_id': None, 'amount': 666, 'timestamp': 1583571972, 'sign': 'GKXrdriNjJAy4TMpCVdkTQhBAlCV2krcmB39mGmLoTX+EyES/E2YUa+C0JYeSIHZuZkjPk3EzUWqEZJGsCvgKCMb98q3TAVL3hm6jlj3bby+iGpcxNyC6V2jI1e8ZIBMkEyh3z0bFVRymEQLyh6We1UWsOz/kaPK4QlJuISXG2A='}
+提现-测试用例执行结果： {'code': 1, 'msg': '会员id为空', 'data': None, 'copyright': 'Copyright 柠檬班 © 2017-2019 湖南省零檬信息技术有限公司 All Rights Reserved'}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>100</td>
+    <td>96</td>
+    <td>4</td>
+    <td>0</td>
+    <td>通过率：96.00%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>
