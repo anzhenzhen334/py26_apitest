@@ -30,7 +30,8 @@ suite.addTest(loader.discover(CASE_DIR))
 # loader = unittest.TestLoader()
 # suite.addTest(loader.loadTestsFromModule(test_main_stream))
 
-file_name = date + 'py26_apitest_report.html'
+# file_name = date + 'py26_apitest_report.html'
+file_name = 'py26_apitest_report.html'
 report_file = os.path.join(REPORT_DIR,file_name)
 
 runner = HTMLTestRunner(stream=open(report_file,'wb'),
